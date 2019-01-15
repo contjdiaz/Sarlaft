@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Entidades.Menu>
+
+<ul class="nav nav-sidebar">
+@if (Model != null)
+{
+	foreach (var item in Model)
+	{
+		if (item.ID_MENU_PADRE is null)
+		{
+			<li>@Html.ActionLink(item.NOMBRE_MENU,item.CONTROLADOR_MENU, item.NOMBRE_ACCION_MENU)</li>
+		}
+	}
+}
+
+</ul>

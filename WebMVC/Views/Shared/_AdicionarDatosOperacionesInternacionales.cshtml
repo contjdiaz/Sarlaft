@@ -1,0 +1,80 @@
+﻿@model WebMVC.Models.OpercacionViewModel
+
+<div class="modal animated fadeIn" id="modal_agregaroperacion" tabindex="-1" role="dialog" aria-labelledby="smallModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="x_title">
+                    Información Operaciones Internacionales
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="x_content">
+                    @Html.HiddenFor(model => model.ID_PERSONA)  
+                    @Html.HiddenFor(model => model.ID_OPERACION)
+                    
+                    <div class="row">
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Tipo operación</label>
+                            @Html.DropDownListFor(model => model.ID_TIPO_OPERACIONES, (SelectList)ViewBag.ListTipoOperaciones, "Seleccione", new { @class = "form-control " })
+                            @Html.ValidationMessageFor(model => model.ID_TIPO_OPERACIONES, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Entidad financiera</label>
+                            @Html.EditorFor(model => model.ENTIDAD_FINANCIERA, new { htmlAttributes = new { @class = "form-control", placeholder = "Entidad financiera", @maxlength = "100" } })
+                            @Html.ValidationMessageFor(model => model.ENTIDAD_FINANCIERA, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Número producto</label>
+                            @Html.EditorFor(model => model.NUMERO_PRODUCTO, new { htmlAttributes = new { @class = "form-control", placeholder = "Número producto", @maxlength = "40" } })
+                            @Html.ValidationMessageFor(model => model.NUMERO_PRODUCTO, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>País </label>
+                            @Html.EditorFor(model => model.PAIS, new { htmlAttributes = new { @class = "form-control", placeholder = "País entidad financiera", @maxlength = "40" } })
+                            @Html.ValidationMessageFor(model => model.PAIS, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Ciudad </label>
+                            @Html.EditorFor(model => model.CIUDAD, new { htmlAttributes = new { @class = "form-control", placeholder = "Ciudad entidad financiera", @maxlength = "40" } })
+                            @Html.ValidationMessageFor(model => model.CIUDAD, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Moneda </label>
+                            @Html.DropDownListFor(model => model.ID_TIPO_MONEDA, (SelectList)ViewBag.LisTipoMoneda, "Seleccione", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_TIPO_MONEDA, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Monto </label>
+                            @Html.EditorFor(model => model.MONTO, new { htmlAttributes = new { @class = "form-control moneda", placeholder = "Monto" } })
+                            @Html.ValidationMessageFor(model => model.MONTO, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-md-6" style="margin-bottom:10px">
+                            <label>Tipo producto </label>
+                            @Html.EditorFor(model => model.TIPO_PRODUCTO, new { htmlAttributes = new { @class = "form-control", placeholder = "Tipo producto" } })
+                            @Html.ValidationMessageFor(model => model.TIPO_PRODUCTO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class=" col-md-12" style="margin-bottom:10px">
+                            <div style="text-align:right">
+                                <button type="button" class="btn btn-icetex" data-dismiss="modal">Cerrar</button>
+                                <button type="button" id="btnGuardarOperacion" class="btn btn-icetex" data-dismiss="modal">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

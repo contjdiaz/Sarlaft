@@ -1,0 +1,41 @@
+﻿@model WebMVC.Models.WSSarlaftModel
+@{
+    ViewBag.Title = "WSrequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>WSrequest</h2>
+<label>Digite su numero de Cedula</label>
+
+
+
+
+@using (Html.BeginForm("WSConsulta", "WSSarlaft", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.identificacion)
+    <br />
+    <label>Digite Nombres</label>
+    <br />
+    @Html.TextBoxFor(model => model.nombres)
+    <br />
+    <label>Digite Apellidos</label>
+    <br />
+    @Html.TextBoxFor(model => model.apellidos)
+    <br /><br />
+    @*@Html.ActionLink("Consultar", "WSConsulta", "WSSarlaft")*@
+    <button type="submit">Consultar</button>
+    <br /><br /><br />
+    <label id="Respuesta">@Html.Raw(@ViewBag.respuesta)</label>
+
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

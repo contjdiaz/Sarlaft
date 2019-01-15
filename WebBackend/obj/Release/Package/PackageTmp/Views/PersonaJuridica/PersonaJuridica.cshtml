@@ -1,0 +1,292 @@
+﻿@model WebBackend.Models.PersonaJuridicaViewModel
+@{
+    ViewBag.Title = "PersonaJuridica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("PersonaJuridica", "PersonaJuridica", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="x_panel">
+        <h2>Persona Jurídica</h2>
+        @Html.HiddenFor(model => model.ID_JURIDICA)
+        @Html.HiddenFor(model => model.ID_PERSONA)
+        @Html.HiddenFor(model => model.ID_TIPO_DOCUMENTO)
+        <div class="row">
+            <div class="col-md-4">
+                <label>Fecha diligenciamiento</label>
+                <div class="form-group">
+                    <input id="FechaDili" value="@string.Format("{0:dd/MM/yyyy hh:mm:ss}", DateTime.Now)" class="form-control" readonly="readonly" disabled="disabled" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Departamento</label>
+                @Html.DropDownListFor(model => model.ID_DEPARTMENTO, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-4">
+                <label>Municipio</label>
+                @Html.DropDownListFor(model => model.ID_MUNICIPIO, Model.ListaMunicipio, "Seleccione un valor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_MUNICIPIO, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="x_title">
+            Datos Generales
+        </div>
+        <div class="x_content">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Identificación Empresa</div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Razón social</label>
+                                    @Html.EditorFor(model => model.RAZON_SOCIAL, new { htmlAttributes = new { @class = "form-control", placeholder = "Razón social", @maxlength = "100" } })
+                                    @Html.ValidationMessageFor(model => model.RAZON_SOCIAL, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Tipo identificación</label>
+                                    @Html.EditorFor(model => model.TIPO_DOCUMENTO, new { htmlAttributes = new { @class = "form-control", placeholder = "Tipo Identificación", @readonly = true } })
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label>Número identificación</label>
+                                    @Html.EditorFor(model => model.NUMERO_DOCUMENTO, new { htmlAttributes = new { @class = "form-control", placeholder = "Número Identificación", @readonly = true } })
+                                    @Html.ValidationMessageFor(model => model.NUMERO_DOCUMENTO, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Datos de la empresa</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Tipo</label>
+                                    @Html.DropDownListFor(model => model.ID_TIPO_EMPRESA, (SelectList)ViewBag.ListaTipoEmpresa, "Seleccione un valor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ID_TIPO_EMPRESA, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Actividad económica</label>
+                                    @Html.DropDownListFor(model => model.ID_ACT_ECONOMICA, (SelectList)ViewBag.ListaActividad, "Seleccione un valor", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label>Código CIU</label>
+                                    @Html.DropDownListFor(model => model.ID_CODIGO_CIIU, Model.ListaoCodigoCiiu, "Seleccione un valor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ID_CODIGO_CIIU, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Ubicación Oficina Principal</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Dirección </label>
+                                    @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control", placeholder = "Dirección principal", @maxlength = "100" } })
+                                    @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Departamento</label>
+                                    @Html.DropDownListFor(model => model.ID_DEPTO_JURIDICA, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Ciudad</label>
+                                    @Html.DropDownListFor(model => model.ID_MUNICIPIO_JURIDICA, Model.ListaMunicipioJuridica, "Seleccione un valor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ID_MUNICIPIO_JURIDICA, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Teléfono </label>
+                                    @Html.EditorFor(model => model.TELEFONO, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Teléfono", @maxlength = "20" } })
+                                    @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Extensión</label>
+                                    @Html.EditorFor(model => model.EXTENSION, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Extensión", @maxlength = "10" } })
+                                    @Html.ValidationMessageFor(model => model.EXTENSION, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Fax</label>
+                                    @Html.EditorFor(model => model.FAX, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Fax", @maxlength = "20" } })
+                                    @Html.ValidationMessageFor(model => model.FAX, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Correo electrónico </label>
+                                    @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo electrónico", @maxlength = "100" } })
+                                    @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Ubicación Sucursal</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Dirección </label>
+                                    @Html.EditorFor(model => model.DIR_SUCURSAL, new { htmlAttributes = new { @class = "form-control", placeholder = "Dirección sucrusal", @maxlength = "100" } })
+                                    @Html.ValidationMessageFor(model => model.DIR_SUCURSAL, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Departamento</label>
+                                    @Html.DropDownListFor(model => model.ID_DEPTO_SUCURSAL, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Ciudad</label>
+                                    @Html.DropDownListFor(model => model.ID_MCPO_SUCURSAL, Model.ListaMunicipioSucursal, "Seleccione un valor", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ID_MCPO_SUCURSAL, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+
+                                    <label>Teléfono </label>
+                                    @Html.EditorFor(model => model.TEL_SUCURSAL, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Teléfono", @maxlength = "20" } })
+                                    @Html.ValidationMessageFor(model => model.TEL_SUCURSAL, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label>Extensión</label>
+                                    @Html.EditorFor(model => model.EXT_SUCURSAL, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Extensión", @maxlength = "10" } })
+                                    @Html.ValidationMessageFor(model => model.EXT_SUCURSAL, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label>Fax</label>
+                                    @Html.EditorFor(model => model.FAX_SUCURSAL, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Fax", @maxlength = "20" } })
+                                    @Html.ValidationMessageFor(model => model.FAX_SUCURSAL, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+
+                                    <label>Correo electrónico </label>
+                                    @Html.EditorFor(model => model.CORREO_SUCURSAL, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo electrónico", @maxlength = "100" } })
+                                    @Html.ValidationMessageFor(model => model.CORREO_SUCURSAL, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group col-md-12" style="text-align:right">
+                    @Html.ActionLink("Anterior", "ValidarIngreso", "ValidarIngresoUsuario", new { }, new { @class = "btn btn-icetex" })
+                    <button type="submit" name="btnSiguiente" class="btn btn-icetex">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/icetex.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.maskMoney.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.mask.js")"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.numero').maskMoney({ symbol: '', thousands: '', decimal: '', precision: 0 });
+            if ($('#ID_DEPTO_SUCURSAL').val() != "") CargarCiudades($('#ID_DEPTO_SUCURSAL').val(), $('#ID_MCPO_SUCURSAL'));
+            if ($('#ID_DEPTO_JURIDICA').val() != "") CargarCiudades($('#ID_DEPTO_JURIDICA').val(), $('#ID_MUNICIPIO_JURIDICA'));
+            if ($('#ID_DEPARTMENTO').val() != "") CargarCiudades($('#ID_DEPARTMENTO').val(), $('#ID_MUNICIPIO'));
+            if ($('#ID_ACT_ECONOMICA').val() != "") CargarCodigoCiiu($('#ID_ACT_ECONOMICA').val(), $('#ID_CODIGO_CIIU'));
+            HabilitarBotonAgregarPEP();
+        });
+
+        $(function () {
+            $('#ID_DEPARTMENTO').change(function () {
+                $('#ID_MUNICIPIO').empty();
+                CargarCiudades($('#ID_DEPARTMENTO').val(), $('#ID_MUNICIPIO'));
+                return false;
+            })
+
+        });
+        $(function () {
+            $('#ID_DEPTO_JURIDICA').change(function () {
+                $('#ID_MUNICIPIO_JURIDICA').empty();
+                CargarCiudades($('#ID_DEPTO_JURIDICA').val(), $('#ID_MUNICIPIO_JURIDICA'));
+                return false;
+            })
+
+        });
+
+        $(function () {
+            $('#ID_DEPTO_SUCURSAL').change(function () {
+                $('#ID_MCPO_SUCURSAL').empty();
+                CargarCiudades($('#ID_DEPTO_SUCURSAL').val(), $('#ID_MCPO_SUCURSAL'));
+                return false;
+            })
+
+        });
+
+        $('#ID_ACT_ECONOMICA').change(function () {
+            $('#ID_CODIGO_CIIU').empty();
+            CargarCodigoCiiu($('#ID_ACT_ECONOMICA').val(), $('#ID_CODIGO_CIIU'));
+        })
+    </script>
+}
+
+
+
+

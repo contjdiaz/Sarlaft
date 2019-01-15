@@ -1,0 +1,38 @@
+﻿@model  IEnumerable<WebBackend.Models.RelacionadoPepViewModel>
+
+@Html.Hidden("item-to-deletef", "", new { @id = "item-to-deletef" })
+<div class="row">
+    <table class="table table-hover" id="tablaRelacionadosPEP">
+        <thead>
+            <tr>
+                <th>Relación</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Tipo identificación</th>
+                <th>No. identificación</th>
+				<th>Entidad</th>
+				<th>Cargo u ocupación</th>
+       
+
+            </tr>
+        </thead>
+        @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+                <tbody>
+                    <tr>
+                        <td>@item.Relacion_RPEP </td>
+                        <td>@item.Nombres_RPEP </td>
+                        <td>@item.Apellidos_RPEP</td>
+                        <td>@item.TipoDocumento_RPEP</td>
+                        <td>@item.DOCUMENTO_RPEP</td>
+						<td>@item.NOMBRE_ENTIDAD_RPEP</td>
+						<td>@item.CARGO_RPEP</td>                      
+                    </tr>
+
+                </tbody>
+        }
+    }
+    </table>
+</div>

@@ -1,0 +1,293 @@
+﻿@model WebMVC.Models.RepresentanteLegalViewModel
+<div id="Representante">
+    @Html.HiddenFor(model => model.ID_JURIDICA)
+    @Html.HiddenFor(model => model.ID_NATURAL)
+    @Html.HiddenFor(model => model.ID_PERSONA)
+    @Html.HiddenFor(model => model.ID_PERSONA_JURIDICA)
+    @Html.HiddenFor(model => model.nuevo)
+    <div class="panel panel-default">
+        <div class="panel-heading">Personales</div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Tipo identificación</label>
+                        @Html.DropDownListFor(model => model.ID_TIPO_DOCUMENTO, (SelectList)ViewBag.ListaTipoIden, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_TIPO_DOCUMENTO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+
+                        <label>Número identificación</label>
+                        @Html.EditorFor(model => model.NUMERO_DOCUMENTO, new { htmlAttributes = new { @class = "form-control", placeholder = "Número identificación", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.NUMERO_DOCUMENTO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Primer nombre</label>
+                        @Html.EditorFor(model => model.PRIMER_NOMBRE, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer nombre", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+
+                    <div class="col-md-4">
+
+                        <label>Segundo nombre</label>
+                        @Html.EditorFor(model => model.SEGUNDO_NOMBRE, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo nombre", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+
+                        <label>Primer apellido</label>
+                        @Html.EditorFor(model => model.PRIMER_APELLIDO, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer apellido", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.PRIMER_APELLIDO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Segundo apellido</label>
+                        @Html.EditorFor(model => model.SEGUNDO_APELLIDO, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo apellido", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.SEGUNDO_APELLIDO, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Sexo</label>
+                        @Html.DropDownListFor(model => model.ID_SEXO, (SelectList)ViewBag.ListaSexo, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_SEXO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Fecha de nacimiento</label>
+                        @Html.EditorFor(model => model.FEC_NACIMIENTO, new { htmlAttributes = new { @class = "form-control fecha" } })
+                        @Html.ValidationMessageFor(model => model.FEC_NACIMIENTO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Departamento de nacimiento</label>
+                        @Html.DropDownListFor(model => model.ID_DEP_NACIMIENTO, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Ciudad nacimiento</label>
+                        @Html.DropDownListFor(model => model.ID_MCPO_NACIMIENTO, Model.ListaMunicipioNac, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MCPO_NACIMIENTO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Fecha de expedición</label>
+                        @Html.EditorFor(model => model.FEC_EXPEDICION, new { htmlAttributes = new { @class = "form-control fecha" } })
+                        @Html.ValidationMessageFor(model => model.FEC_EXPEDICION, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Departamento de expedición</label>
+                        @Html.DropDownListFor(model => model.ID_DEP_EXPEDICION, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Ciudad de expedición</label>
+                        @Html.DropDownListFor(model => model.ID_MCPO_EXPEDICION, Model.ListaMunicipioExp, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MCPO_EXPEDICION, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Estado civil</label>
+                        @Html.DropDownListFor(model => model.ID_ESTADO_CIVIL, (SelectList)ViewBag.ListEstadoCivil, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_ESTADO_CIVIL, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Datos Residencia</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label>Dirección de residencia</label>
+
+                        @Html.EditorFor(model => model.DIR_RESIDENCIA, new { htmlAttributes = new { @class = "form-control", placeholder = "Dirección de residencia", @maxlength = "100" } })
+                        @Html.ValidationMessageFor(model => model.DIR_RESIDENCIA, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-md-4">
+                        <label>Teléfono residencia</label>
+                        @Html.EditorFor(model => model.TEL_RESIDENCIA, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Teléfono", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.TEL_RESIDENCIA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Departamento residencia</label>
+                        @Html.DropDownListFor(model => model.ID_DEP_RESIDENCIA, (SelectList)ViewBag.ListaDepartamento, "Seleccione un valor", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ciudad residencia</label>
+                        @Html.DropDownListFor(model => model.ID_MCPO_RESIDENCIA, Model.ListaMunicipioResidencia, "Seleccione un valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MCPO_RESIDENCIA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label>Correo electrónico</label>
+                        @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo electrónico", @maxlength = "40" } })
+                        @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Celular</label>
+                        @Html.EditorFor(model => model.CELULAR, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Celular", @maxlength = "40" } })
+                        @Html.ValidationMessageFor(model => model.CELULAR, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Datos contacto empresa</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Teléfono</label>
+
+                        @Html.EditorFor(model => model.TELEFONO_EMPRESA, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Teléfono empresa", @maxlength = "40" } })
+                        @Html.ValidationMessageFor(model => model.TELEFONO_EMPRESA, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-md-4">
+
+                        <label>Extensión</label>
+                        @Html.EditorFor(model => model.EXTENSION_EMPRESA, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Extensión empresa", @maxlength = "40" } })
+                        @Html.ValidationMessageFor(model => model.EXTENSION_EMPRESA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+
+                        <label>Fax</label>
+                        @Html.EditorFor(model => model.FAX_EMPRESA, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Fax", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.FAX_EMPRESA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		var today = new Date("01/31/1910");
+		$('.fecha').datepicker({
+			startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+			endDate: 'd',
+			format: 'dd/mm/yyyy'
+        })
+
+        $('.numero').maskMoney({ symbol: '', thousands: '', decimal: '', precision: 0 });
+
+        $("#FEC_NACIMIENTO").change(function () {
+            if ($("#FEC_NACIMIENTO").val() != "") {
+                var edad = calculate_age($("#FEC_NACIMIENTO").val());
+
+                if (edad < 18) {
+                    $("#FEC_NACIMIENTO").val("");
+                    alert("La edad mínima es 18 años");
+                }
+            }
+        });
+
+   // Número documento
+             $('#NUMERO_DOCUMENTO').change(function () {
+            if ($('#nuevo').val() == "1") {
+                if ($('#ID_TIPO_DOCUMENTO').val() == "") {
+                    alert("El tipo de documento es obligatorio");
+                    return false;
+                }
+                var varPersonaId = '@Model.ID_PERSONA_JURIDICA';
+                var varjuridicaId = '@Model.ID_JURIDICA';
+                $.ajax({
+
+                    url: "/PersonaJuridica/CargarRepresentante",
+                    type: "GET",
+                    data: { tipo: $('#ID_TIPO_DOCUMENTO').val(), documento: $('#NUMERO_DOCUMENTO').val(), IdPersona: varPersonaId, IdJuridica: varjuridicaId }
+                })
+                    .done(function (partialViewResult) {
+                        $("#DatosRepresentante").html(partialViewResult);
+
+
+                    });
+            }
+        });
+
+        $('#ID_TIPO_DOCUMENTO').change(function () {
+            if ($('#nuevo').val() == "1") {
+                if ($('#NUMERO_DOCUMENTO').val() == "") {
+                    alert("El número documento es obligatorio");
+                    return false;
+                }
+                var varPersonaId = '@Model.ID_PERSONA_JURIDICA';
+                var varjuridicaId = '@Model.ID_JURIDICA';
+                $.ajax({
+
+                    url: "/PersonaJuridica/CargarRepresentante",
+                    type: "GET",
+                    data: { tipo: $('#ID_TIPO_DOCUMENTO').val(), documento: $('#NUMERO_DOCUMENTO').val(), IdPersona: varPersonaId, IdJuridica: varjuridicaId }
+                })
+                    .done(function (partialViewResult) {
+                        $("#DatosRepresentante").html(partialViewResult);
+
+
+                    });
+            }
+        });
+	});
+
+
+    $(function () {
+        $('#ID_DEP_EXPEDICION').change(function () {
+            $('#ID_MCPO_EXPEDICION').empty();
+            CargarCiudades($('#ID_DEP_EXPEDICION').val(), $('#ID_MCPO_EXPEDICION'));
+            return false;
+        })
+
+    });
+
+    $(function () {
+        $('#ID_DEP_NACIMIENTO').change(function () {
+            $('#ID_MCPO_NACIMIENTO').empty();
+            CargarCiudades($('#ID_DEP_NACIMIENTO').val(), $('#ID_MCPO_NACIMIENTO'));
+            return false;
+        })
+
+    });
+
+    $(function () {
+        $('#ID_DEP_RESIDENCIA').change(function () {
+            $('#ID_MCPO_RESIDENCIA').empty();
+            CargarCiudades($('#ID_DEP_RESIDENCIA').val(), $('#ID_MCPO_RESIDENCIA'));
+            return false;
+        })
+
+    });
+</script>

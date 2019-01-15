@@ -1,0 +1,371 @@
+﻿@charset "UTF-8";
+
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import "bootstrap.css";
+
+@import "animate/animate.css";
+
+
+
+.logo_icetex {
+    top: 15px;
+}
+
+.text-info {
+    color: #3fbae4 !important;
+}
+
+.fondo_icetex {
+       background-color: #14306f;
+    font-family: 'Droid Sans';
+    color: #FFF;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.titulo_icetex {
+       background-color: #14306f;
+    font-family: 'Droid Sans';
+    color: #FFF;
+    font-size: 30px;
+    font-weight: bold;
+    top: 40px;
+    text-align: center;
+}
+
+.page-container .fondo_icetex {
+    background-color: #14306f;
+}
+
+.nuevopais {
+    background: url(../img/logos/nuevopa.jpg) left top no-repeat;
+    height: 103px;
+    float: left;
+    display: block;
+}
+
+
+/* EOF PREDEFINED CLASSES */
+
+
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+    .row [class^='col-xs-'],
+    .row [class^='col-sm-'],
+    .row [class^='col-md-'],
+    .row [class^='col-lg-'] {
+        min-height: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+
+
+
+/* START TEMPLATE */
+.page-container {
+    float: left;
+    width: 100%;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background: #ffffff;
+    position: relative;
+}
+
+    .page-container .page-header {
+        float: left;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        border-bottom: 0px;
+    }
+
+    .page-container .page-footer {
+        float: left;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        background-color: #909090;
+    }
+
+        .page-container .page-footer .page-footer-wrap {
+            float: left;
+            width: 100%;
+        }
+
+            .page-container .page-footer .page-footer-wrap .page-footer-holder {
+                padding-left: 20px;
+                margin: 0px auto;
+                color: #FFF;
+            }
+
+                .page-container .page-footer .page-footer-wrap .page-footer-holder.page-footer-holder-main {
+                    margin: 30px auto;
+                }
+
+                .page-container .page-footer .page-footer-wrap .page-footer-holder a {
+                    color: #FFF;
+                }
+
+                    .page-container .page-footer .page-footer-wrap .page-footer-holder a:hover {
+                        color: #f5b11a;
+                    }
+
+                .page-container .page-footer .page-footer-wrap .page-footer-holder h3 {
+                    font-size: 14px;
+                    line-height: 13px;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    padding: 0px;
+                    float: left;
+                    width: 100%;
+                }
+
+.copyright_title {
+    font-size: 12px;
+    color: #FFF;
+    background-color: #555555;
+}
+
+.page-container .page-footer .page-footer-wrap .page-footer-holder .copyright {
+    line-height: 30px;
+    padding: 10px 0px;
+    float: left;
+    font-size: 12px;
+}
+
+.btn-ingreso-registro button {
+    width: 100%;
+    max-width: inherit;
+    min-width: auto;
+}
+
+.barragris {
+    background-color: #555555;
+    text-align: left;
+    color: #FFF;
+}
+
+.titulo_carrusel {
+    padding: -20px 0px 0px 0px;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titulo_seccion {
+    border-radius: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #14306f;
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+
+.btn.btn-google {
+    background-image: url(../img/gm.png);
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    background-position: center center;
+    float: left;
+}
+
+    .btn.btn-google:hover,
+    .btn.btn-google:focus,
+    .btn.btn-google:active,
+    .btn.btn-google.active {
+        background-image: url(../img/gm.png);
+        background-repeat: no-repeat;
+    }
+
+    .btn.btn-facebook {
+	background-image: url(../img/fb.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 40px;
+	background-position: center center;
+	float: right;
+}
+
+    .btn.btn-facebook:hover,
+    .btn.btn-facebook:focus,
+    .btn.btn-facebook:active,
+    .btn.btn-facebook.active {
+	background-image: url(../img/fb.png);
+	background-repeat: no-repeat;
+    }
+/* BOOTSTRAP DATEPICKER */
+div.datepicker {
+    padding: 10px;
+    -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+}
+
+    div.datepicker > div {
+        display: none;
+    }
+
+    div.datepicker table {
+        width: 100%;
+        margin: 0;
+    }
+
+    div.datepicker td,
+    div.datepicker th {
+        text-align: center;
+        width: 20px;
+        height: 20px;
+    }
+
+        div.datepicker td.day:hover {
+            background: #F5F5F5;
+            cursor: pointer;
+        }
+
+        div.datepicker td.day.disabled {
+            color: #CCC;
+        }
+
+        div.datepicker td.old,
+        div.datepicker td.new {
+            color: #999;
+        }
+
+        div.datepicker td.active,
+        div.datepicker td.active:hover {
+            background: #33414e;
+            color: #fff;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        div.datepicker td span {
+            display: block;
+            width: 31%;
+            height: 54px;
+            line-height: 54px;
+            float: left;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+            div.datepicker td span:hover {
+                background: #F5F5F5;
+            }
+
+            div.datepicker td span.active {
+                background: #33414e;
+                color: #fff;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+            }
+
+            div.datepicker td span.old {
+                color: #999;
+            }
+
+        div.datepicker th.switch {
+            width: 145px;
+        }
+
+        div.datepicker th.next,
+        div.datepicker th.prev {
+            font-size: 12px;
+        }
+
+    div.datepicker thead tr:first-child th {
+        cursor: pointer;
+        padding: 8px 0px;
+    }
+
+        div.datepicker thead tr:first-child th:hover {
+            background: #F5F5F5;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.datepicker.dropdown-menu:after,
+.datepicker.dropdown-menu:before {
+    left: 16px;
+}
+
+.datepicker.datepicker-orient-left.dropdown-menu:after,
+.datepicker.datepicker-orient-left.dropdown-menu:before {
+    left: auto;
+    right: 16px;
+}
+/* EOF BOOTSTRAP DATEPICKER */
+
+@media only screen and (max-width: 768px) {
+    [class^='col-xs-'],
+    [class^='col-sm-'],
+    [class^='col-md-'],
+    [class^='col-lg-'] {
+        margin-bottom: 10px;
+    }
+
+
+    .fondo_icetex {
+           background-color: #14306f;
+        font-family: 'Droid Sans';
+        color: #FFF;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+
+    .titulo_icetex {
+           background-color: #14306f;
+        font-family: 'Droid Sans';
+        color: #FFF;
+        font-size: 12px;
+        font-weight: bold;
+        top: -20px;
+        text-align: center;
+    }
+
+    .nuevopais {
+        top: 15px;
+        background: url(../img/logos/nuevopa2.jpg) left top no-repeat;
+        width: 320px;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        margin-left: -30px;
+    }
+
+    .logo_icetex {
+        top: 25px;
+    }
+
+    .page-container .fondo_icetex {
+        background-color: #14306f;
+    }

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <Script Language="JavaScript">
+
+        function DameLaFechaHora() {
+
+            var hoy = new Date();
+            var m = new Array();
+            var d = new Array()
+            var an = hoy.getYear();
+            document.write(hoy.getDate());
+            document.write("/");
+            document.write(hoy.getMonth() + 1);
+            document.write("/");
+            document.write(hoy.getFullYear());
+
+        }
+    </Script>
+    <script>
+         function substitutePdfVariables() {
+
+             function getParameterByName(name) {
+                 var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+                 return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+             }
+
+             function substitute(name) {
+                 var value = getParameterByName(name);
+                 var elements = document.getElementsByClassName(name);
+
+                 for (var i = 0; elements && i < elements.length; i++) {
+                     elements[i].textContent = value;
+                 }
+             }
+
+             ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection']
+                 .forEach(function (param) {
+                     substitute(param);
+                 });
+         }
+    </script>
+</head>
+<body onload="substitutePdfVariables()">
+    <table align="center">
+        <tr>
+            <td width=20% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:12px; text-align:center;">
+                <strong>
+                    impreso:
+                    <script>
+
+                        DameLaFechaHora();
+                    </script>
+                </strong>
+            </td>
+            <td width=60% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:12px; text-align:center;">
+                <p>Pagina <span class="page"></span> de <span class="topage"></span></p>
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>

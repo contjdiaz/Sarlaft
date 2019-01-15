@@ -1,0 +1,743 @@
+@model WebMVC.Models.PersonaJuridicaImpresionViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Persona Jurídica</title>
+</head>
+<body style="background-color: #FFF; text-align:center; font:'Trebuchet MS', Arial, Helvetica, sans-serif; text-align:center;">
+    <h2> </h2>
+
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>DATOS DILIGENCIAMIENTO</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border="1" width="100%">
+
+        <tr align="left">
+            <td width=16% colspan="2">
+                <label>FECHA</label>
+            </td>
+            <td width=20% colspan="1">
+                @Html.DisplayFor(m => m.FEC_DILIGENCIAMIENTO)
+            </td>
+            <td width=16% colspan="1">
+                <label>DEPARTAMENTO</label>
+            </td>
+            <td width=16% colspan="2">
+                @Html.DisplayFor(m => m.DEPARTAMENTO)
+            </td>
+            <td width=16% colspan="1">
+                <label>MUNICIPIO</label>
+            </td>
+            <td width=16% colspan="1">
+                @Html.DisplayFor(m => m.MUNICIPIO)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>DATOS EMPRESA</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left">
+            <td width=16% colspan="2">
+                <label>RAZÓN SOCIAL</label>
+            </td>
+            <td width=20% colspan="1">
+                @Html.DisplayFor(m => m.RAZON_SOCIAL)
+            </td>
+            <td width=16% colspan="1">
+                <label>TIPO DE IDENTIFICACIÓN</label>
+            </td>
+            <td width=16% colspan="2">
+                @Html.DisplayFor(m => m.TIPO_DOCUMENTO)
+            </td>
+            <td width=16% colspan="1">
+                <label>N° IDENTIFICACIÓN</label>
+            </td>
+            <td width=16% colspan="1">
+                @Html.DisplayFor(m => m.NUMERO_DOCUMENTO)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>DATOS REPRESENTANTE LEGAL</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left">
+            <td width=20% colspan="2">
+                <label>NOMBRES</label>
+            </td>
+            <td width=30% colspan="2">
+                @Html.DisplayFor(m => m.NOMBRES)
+            </td>
+            <td width=20% colspan="2">
+                <label>APELLIDOS</label>
+            </td>
+            <td width=30% colspan="2">
+                @Html.DisplayFor(m => m.APELLIDOS)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=5%>
+                <label>SEXO</label>
+            </td>
+            <td width=8%>
+                @Html.DisplayFor(m => m.SEXO)
+            </td>
+            <td width=16%>
+                <label>TIPO IDENTIFICACIÓN</label>
+            </td>
+            <td width=15% align="left">
+                @Html.DisplayFor(m => m.TIPO_DOCUMENTO_REP_LEGAL)
+            </td>
+            <td width=13%>
+                <label>N° IDENTIFICACIÓN</label>
+            </td>
+            <td width=13%>
+                @Html.DisplayFor(m => m.NUMERO_DOCUMENTO_REP_LEGAL)
+            </td>
+            <td width=17%>
+                <label>FECHA EXPEDICIÓN</label>
+            </td>
+            <td width=13%>
+                @Html.DisplayFor(m => m.FEC_EXPEDICION)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=5% colspan="2">
+                <label>DPTO. EXPEDICIÓN</label>
+            </td>
+            <td width=8% colspan="1">
+                @Html.DisplayFor(m => m.DEP_EXPEDICION)
+            </td>
+            <td width=16% colspan="1">
+                <label>CIUDAD EXPEDICIÓN</label>
+            </td>
+            <td width=15% colspan="2">
+                @Html.DisplayFor(m => m.MCPO_EXPEDICION)
+            </td>
+            <td width=15% colspan="1">
+                <label>FECHA NACIMIENTO</label>
+            </td>
+            <td width=10% colspan="1">
+                @Html.DisplayFor(m => m.FEC_NACIMIENTO)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=5% colspan="2">
+                <label>DPTO. NACIMIENTO</label>
+            </td>
+            <td width=8% colspan="1">
+                @Html.DisplayFor(m => m.DEP_NACIMIENTO)
+            </td>
+            <td width=16% colspan="1">
+                <label>CIUDAD NACIMIENTO</label>
+            </td>
+            <td width=15% colspan="2">
+                @Html.DisplayFor(m => m.MCPO_NACIMIENTO)
+            </td>
+            <td width=15% colspan="1">
+                <label>ESTADO CIVIL</label>
+            </td>
+            <td width=10% colspan="1">
+                @Html.DisplayFor(m => m.ESTADO_CIVIL)
+            </td>
+        </tr>
+
+        <tr align="left">
+            <td width=5% colspan="2">
+                <label>DIRECCIÓN</label>
+            </td>
+            <td width=8% colspan="6">
+                @Html.DisplayFor(m => m.DIR_RESIDENCIA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=20% colspan="2">
+                <label>DPTO. RESIDENCIA</label>
+            </td>
+            <td width=30% colspan="2">
+                @Html.DisplayFor(m => m.DEP_RESIDENCIA)
+            </td>
+            <td width=20% colspan="2">
+                <label>CIUDAD RESIDENCIA</label>
+            </td>
+            <td width=30% colspan="2">
+                @Html.DisplayFor(m => m.MCPO_RESIDENCIA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td colspan="2">
+                <label>CORREO</label>
+            </td>
+            <td colspan="2">
+                @Html.DisplayFor(m => m.CORREO)
+            </td>
+            <td colspan="1">
+                <label>CELULAR</label>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(m => m.CELULAR)
+            </td>
+            <td colspan="1">
+                <label>TELÉFONO</label>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(m => m.TEL_RESIDENCIA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td colspan="2">
+                <label>TELÉFONO EMPRESA</label>
+            </td>
+            <td colspan="2">
+                @Html.DisplayFor(m => m.TELEFONO_EMPRESA)
+            </td>
+            <td colspan="1">
+                <label>EXTENSIÓN</label>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(m => m.EXTENSION_EMPRESA)
+            </td>
+            <td colspan="1">
+                <label>FAX EMPRESA</label>
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(m => m.FAX_EMPRESA)
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left">
+            <td width="45%">
+                <label>¿ES PERSONA EXPUESTA POLÍTICAMENTE? (DECRETO 1674 DE 2016)</label>
+            </td>
+            <td width="5%">
+                @Html.DisplayFor(m => m.DECRETO_1674)
+
+            </td>
+            <td width="45%">
+                <label>¿ES USTED REPRESENTANTE LEGAL DE UNA ORGANIZACIÓN INTERNACIONAL?</label>
+            </td>
+            <td width="5%">
+                @Html.DisplayFor(m => m.REP_ORG_INTERNACIONAL)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="45%">
+                <label>¿GOZA DE RECONOCIMIENTO PÚBLICO?</label>
+            </td>
+            <td width="5%">
+                @Html.DisplayFor(m => m.RECONOCIMIENTO_PUB)
+            </td>
+            <td width="45%">
+                <label>¿EXISTE ALGÚN VÍNCULO CON UNA PERSONA PÚBLICAMENTE EXPUESTA?</label>
+            </td>
+            <td width="5%">
+                @Html.DisplayFor(m => m.VINCULO_PEP)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left" bgcolor="#E6E6E6">
+            <td width="100%" colspan="4">
+                <label>DATOS DE IDENTIFICACIÓN PEP</label>
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="25%">
+                <label>ENTIDAD PEP</label>
+            </td>
+            <td width="25%">
+                @Html.DisplayFor(m => m.ENTIDAD_PEP)
+            </td>
+            <td width="25%">
+                <label>CARGO-OCUPACIÓN PEP</label>
+            </td>
+            <td width="25%">
+                @Html.DisplayFor(m => m.CARGO_PEP)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="25%">
+                <label>FECHA VINCULACIÓN</label>
+            </td>
+            <td width="25%">
+                @Html.DisplayFor(m => m.FEC_VINCULA_PEP)
+            </td>
+            <td width="25%">
+                <label>FECHA DESVINCULACIÓN</label>
+            </td>
+            <td width="25%">
+                @Html.DisplayFor(m => m.FEC_DESVINCULA_PEP)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left" bgcolor="#E6E6E6">
+            <td colspan="9">
+                @*<td colspan="7">*@
+                <label>DATOS DE IDENTIFICACIÓN DE LOS RELACIONADOS DEL REPRESENTANTE LEGAL PEP</label>
+            </td>
+        </tr>
+        <tr align="center" bgcolor="#F2F2F2">
+            <th width="10%">
+                <label>RELACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>NOMBRES</label>
+            </th>
+            <th width="10%">
+                <label>APELLIDOS</label>
+            </th>
+            <th width="10%">
+                <label>TIPO DOC.</label>
+            </th>
+            <th width="10%">
+                <label>N° DOC.</label>
+            </th>
+            <th width="20%">
+                <label>ENTIDAD</label>
+            </th>
+            <th width="10%">
+                <label>CARGO-OCUPACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>FECHA VINCULACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>FECHA DESVINCULACIÓN</label>
+            </th>
+        </tr>
+        @if (Model.RelacionadosPep != null)
+        {
+            foreach (var item in Model.RelacionadosPep)
+            {
+                <tr>
+                    <td>@item.Relacion_RPEP </td>
+                    <td>@item.Nombres_RPEP </td>
+                    <td>@item.Apellidos_RPEP</td>
+                    <td>@item.TipoDocumento_RPEP</td>
+                    <td>@item.DOCUMENTO_RPEP</td>
+                    <td>@item.NOMBRE_ENTIDAD_RPEP</td>
+                    <td>@item.CARGO_RPEP</td>
+                    <td>@item.FEC_VINCULA_RPEP</td>
+                    <td>@item.FEC_DESVINCULA_RPEP</td>
+                </tr>
+            }
+        }
+    </table>
+    <br>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left" bgcolor="#E6E6E6">
+            <td colspan="9">
+                <label>DATOS DE IDENTIFICACIÓN DE LOS ADMINISTRADORES CATALOGADOS COMO PEP</label>
+            </td>
+        </tr>
+        <tr align="center" bgcolor="#F2F2F2">
+            <th width="10%">
+                <label>RELACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>NOMBRES</label>
+            </th>
+            <th width="10%">
+                <label>APELLIDOS</label>
+            </th>
+            <th width="10%">
+                <label>TIPO DOC.</label>
+            </th>
+            <th width="10%">
+                <label>N° DOC.</label>
+            </th>
+            <th width="20%">
+                <label>ENTIDAD</label>
+            </th>
+            <th width="10%">
+                <label>CARGO-OCUPACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>FECHA VINCULACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>FECHA DESVINCULACIÓN</label>
+            </th>
+        </tr>
+        @if (Model.Administradores != null)
+        {
+            foreach (var item in Model.Administradores)
+            {
+                <tr>
+                    <td>@item.Relacion_RPEP </td>
+                    <td>@item.Nombres_RPEP </td>
+                    <td>@item.Apellidos_RPEP</td>
+                    <td>@item.TipoDocumento_RPEP</td>
+                    <td>@item.DOCUMENTO_RPEP</td>
+                    <td>@item.NOMBRE_ENTIDAD_RPEP</td>
+                    <td>@item.CARGO_RPEP</td>
+                    <td>@item.FEC_VINCULA_RPEP</td>
+                    <td>@item.FEC_DESVINCULA_RPEP</td>
+                </tr>
+            }
+        }
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>DATOS DE LA EMPRESA</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left">
+            <td width=16%>
+                <label>TIPO DE EMPRESA</label>
+            </td>
+            <td width=20%>
+                @Html.DisplayFor(m => m.TIPO_EMPRESA)
+            </td>
+            <td width=16%>
+                <label>ACTIVIDAD DE EMPRESA</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.ACTIVIDAD_ECONOMICA)
+            </td>
+            <td width=16%>
+                <label>CODIGO CIIU EMPRESA</label>
+            </td>
+            <td width=16%>
+                <label>@Html.DisplayFor(m => m.CODIGO_CIIU)</label>
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16% colspan="2">
+                <label>DIRECCIÓN OFICINA PRINCIPAL</label>
+            </td>
+            <td width=16% colspan="4">
+                @Html.DisplayFor(m => m.DIRECCION_JURIDICA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16%>
+                <label>DPTO. OFICINA PRINCIPAL</label>
+            </td>
+            <td width=20%>
+                @Html.DisplayFor(m => m.DEPTO_JURIDICA)
+            </td>
+            <td width=16%>
+                <label>CIUDAD OFICINA PRINCIPAL</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.MUNICIPIO_JURIDICA)
+            </td>
+            <td width=16%>
+                <label>CORREO ELECTRÓNICO EMPRESA</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.CORREO_JURIDICA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16%>
+                <label>TELÉFONO EMPRESA</label>
+            </td>
+            <td width=20%>
+                @Html.DisplayFor(m => m.TELEFONO_JURIDICA)
+            </td>
+            <td width=16%>
+                <label>EXTENSIÓN EMPRESA</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.CORREO_JURIDICA)
+            </td>
+            <td width=16%>
+                <label>FAX EMPRESA</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.FAX_EMPRESA)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16% colspan="2">
+                <label>DIRECCIÓN SUCURSAL</label>
+            </td>
+            <td width=16% colspan="4">
+                @Html.DisplayFor(m => m.DIR_SUCURSAL)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16%>
+                <label>DPTO. SUCURSAL</label>
+            </td>
+            <td width=20%>
+                @Html.DisplayFor(m => m.DEPTO_SUCURSAL)
+            </td>
+            <td width=16%>
+                <label>CIUDAD SUCURSAL</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.MCPO_SUCURSAL)
+            </td>
+            <td width=16%>
+                <label>CORREO ELECTRÓNICO SUCURSAL</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.CORREO_SUCURSAL)
+            </td>
+        </tr>
+        <tr align="left">
+            <td width=16%>
+                <label>TELÉFONO SUCURSAL</label>
+            </td>
+            <td width=20%>
+                @Html.DisplayFor(m => m.TEL_SUCURSAL)
+            </td>
+            <td width=16%>
+                <label>EXTENSIÓN SUCURSAL</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.EXT_SUCURSAL)
+            </td>
+            <td width=16%>
+                <label>FAX SUCURSAL</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.FAX_SUCURSAL)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>INFORMACIÓN FINANCIERA - Valores en Pesos Colombianos (COP)</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left">
+            <td width=17%>
+                <label>TOTAL ACTIVOS</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.TOTAL_ACTIVOS)
+            </td>
+            <td width=16%>
+                <label>TOTAL PASIVOS</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.TOTAL_PASIVOS)
+            </td>
+            <td width=17%>
+                <label>TOTAL PATRIMONIO</label>
+            </td>
+            <td width=16%>
+                @Html.DisplayFor(m => m.TOTAL_PATRIMONIO)
+            </td>
+        </tr>
+        <tr align="left">
+            <td>
+                <label>EGRESOS MENSUALES</label>
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.EGRESOS_MENSUALES)
+            </td>
+            <td>
+                <label>INGRESOS MENSUALES</label>
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.INGRESOS_MENSUALES)
+            </td>
+            <td>
+                <label>OTROS INGRESOS MENSUALES</label>
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.OTROS_INGRESOS_MENSUALES)
+            </td>
+        </tr>
+        <tr align="left">
+            <td colspan="2">
+                <label>CONCEPTO OTROS INGRESOS</label>
+            </td>
+            <td colspan="4">
+                @Html.DisplayFor(m => m.OTROS_CONCEPTOS)
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:16px; text-align:left; color:#FFFFFF" bgcolor="#045FB4">
+                <label>ACTIVIDAD EN OPERACIONES INTERNACIONALES</label>
+            </td>
+        </tr>
+    </table>
+    <table style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;" border=1 width="100%">
+        <tr align="left" bgcolor="#E6E6E6">
+
+            <td colspan="9">
+                @*<td colspan="7">*@
+                <label>OPERACIONES MONEDA EXTRANJERA</label>
+            </td>
+        </tr>
+        <tr align="center" bgcolor="#F2F2F2">
+            <th width="10%">
+                <label>TIPO OPERACIÓN</label>
+            </th>
+            <th width="10%">
+                <label>ENTIDAD FINANCIERA</label>
+            </th>
+            <th width="10%">
+                <label>PAÍS</label>
+            </th>
+            <th width="10%">
+                <label>CIUDAD</label>
+            </th>
+            <th width="10%">
+                <label>MONTO</label>
+            </th>
+            <th width="20%">
+                <label>MONEDA</label>
+            </th>
+            <th width="10%">
+                <label>TIPO DE PRODUCTO</label>
+            </th>
+        </tr>
+        @if (Model.OperacionesInternacionales != null)
+        {
+            foreach (var item in Model.OperacionesInternacionales)
+            {
+                <tr>
+                    <td>@item.TIPO_OPERACIONES </td>
+                    <td>@item.ENTIDAD_FINANCIERA </td>
+                    <td>@item.PAIS</td>
+                    <td>@item.CIUDAD</td>
+                    <td>@item.MONTO</td>
+                    <td>@item.TIPO_MONEDA</td>
+                    <td>@item.TIPO_PRODUCTO</td>
+                </tr>}
+        }
+
+    </table>
+    <br><br><br><br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left; color:#FFFFFF" bgcolor="#A9D0F5">
+                <label>Declaración de Origen de Bienes y/o Fondos</label>
+            </td>
+        </tr>
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left;">
+                <label>DECLARO QUE ESTOS RECURSOS NO PROVIENEN DE NINGUNA ACTIVIDAD ILICITA DE LAS CONTEMPLADAS EN EL CÓDIGO PENAL COLOMBIANO O EN CUALQUIER NORMA QUE LO MODIFIQUE O ADICIONE</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left; color:#FFFFFF" bgcolor="#A9D0F5">
+                <label>Cláusula de Autorización</label>
+            </td>
+        </tr>
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left;">
+                <label>DE MANERA EXPRESA, PREVIA E INFORMADA AUTORIZO EL TRATAMIENTO DE MIS DATOS PERSONALES PARA LAS FINALIDADES Y EN LOS TÉRMINOS QUE NOS FUERON INFORMADOS EN ESTE FORMULARIO</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left; color:#FFFFFF" bgcolor="#A9D0F5">
+                <label>Documentos Requeridos</label>
+            </td>
+        </tr>
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left;">
+                <label>Información Pendiente<br></label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left; color:#FFFFFF" bgcolor="#A9D0F5">
+                <label>Notas Aclaratorias</label>
+            </td>
+        </tr>
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left;">
+                <label> -LEY 222 DE 1995 ARTÍCULO 22: Administradores. Son administradores el representante legal, representante legal suplente,  liquidador, el factor, los miembros de juntas o consejos directivos y quienes de acuerdo con los estudios ejerzan esas funciones.</label>
+                <br><br>
+                <label> -RELACION DE ORGANISMOS INTERNACIONALES GAFI  - ORGANIZACIONES INTERNACIONALES: Son entidades establecidas mediante acuerdos políticos oficiales entre sus Estados Miembros, los cuales tienen el estatus de tratados internacionales; su existencia es reconocida por la ley en sus respectivos Estados Miembros y no son tratadas como unidades institucionales residentes de los países en los que están ubicadas. Entre los ejemplos de organizaciones internacionales está la Organización de las Naciones Unidas y organizaciones internacionales afiliadas, como la Organización Marítima Internacional; organizaciones internacionales regionales como el Consejo de Europa, instituciones de la Unión Europea, la Organización para la Seguridad y la  Cooperación en Europa y la Organización de Estados Americanos; organizaciones militares internacionales, como la Organización del Tratado del Atlántico Norte, y organizaciones económicas como la Organización Mundial del Comercio o la Asociación de Naciones del Sudeste Asiático, etc.</label>
+                <br><br>
+                <label> -PERSONAS POLITICAMENTE EXPUESTAS Definidas en el Decreto 1674 del 21 de octubre de 2016: Son aquellas personas naturales que durante el periodo en el que ocupen sus cargos y durante los dos (2) años siguientes a su dejación, renuncia, despido o declaración de insubsistencia del nombramiento, o de cualquier otra forma de desvinculación y tengan alguno de los cargos que se mencionan a continuación, serán catalogadas como Personas Expuestas Políticamente ´´PEP´´.</label>
+                <br><br>
+                <label> -INFORMACIÓN RELACIONADOS PEP: </label>
+                <br>
+                <label>__a-	Persona con sociedad conyugal, de hecho o de derecho (esposo, esposa, compañero permanente) </label>
+                <br>
+                <label>__b-	Familiar hasta el segundo grado de consanguinidad (padres, abuelos, hermanos, hijos, nietos)</label>
+                <br>
+                <label>__c-	Familiar hasta el segundo grado de afinidad (padre, madre, hijos, abuelos, nietos, hermanos, todos estos del conyugue o compañero/a permanente del PEP</label>
+                <br>
+                <label>__d-	Primero civil (hijos adoptivos o padres adoptivos)</label>
+                <br>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table border=1 width="100%">
+        <tr>
+            <td width=100% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:left; color:#FFFFFF" bgcolor="#045FB4" colspan="2">
+                <label>FIRMA Y HUELLA</label>
+            </td>
+        </tr>
+        <tr>
+            <td width=90% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:center;">
+                <label>
+                    DECLARO HABER LEÍDO, COMPRENDIDO Y ACEPTADO LO INDICADO Y EN SEÑAL DE ACEPTACIÓN FIRMO EL PRESENTE DOCUMENTO
+                    <br><br><br><br>
+                    <br><br>
+                    ________________________________________________________________________________
+                    <br>FIRMA DEL CLIENTE
+            </td>
+            <td width=13% style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px; text-align:center;">
+                <br><br><br><br>
+                <br><br>
+                HUELLA DACTILAR
+                </label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table align="center" style="font-family:Calibri,sans-serif, Arial, Helvetica; font-size:10px;">
+        <tr>
+            <td width=100% align="justify"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

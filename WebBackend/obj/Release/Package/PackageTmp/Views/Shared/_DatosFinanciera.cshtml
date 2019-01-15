@@ -1,0 +1,68 @@
+﻿@model WebBackend.Models.PersonaViewModel
+@Html.HiddenFor(model => model.IdPersonaViewModel)
+@Html.HiddenFor(model => model.ID_MUNICIPIO)
+@Html.HiddenFor(model => model.ID_TIPO_DOCUMENTO)
+@Html.HiddenFor(model => model.ID_TIPO_PERSONA)
+@Html.HiddenFor(model => model.NUMERO_DOCUMENTO)
+@Html.HiddenFor(model => model.AUTORIZACION_DATOS)
+@Html.HiddenFor(model => model.DECLARACION_BIENES)
+            <p class="text-info"><i class="fa fa-info-circle"></i> Los valores deben ser en pesos colombianos (COP).</p>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Total activos $</label>
+					
+                        @Html.EditorFor(m => m.TOTAL_ACTIVOS, new { htmlAttributes = new { @class = "form-control moneda soloLectura", placeholder = "Total activos" } })
+						@Html.ValidationMessageFor(model => model.TOTAL_ACTIVOS, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Total pasivos $</label>
+                        @Html.EditorFor(m => m.TOTAL_PASIVOS, new { htmlAttributes = new { @class = "form-control moneda maskMoney soloLectura", placeholder = "Total pasivos" } })
+						@Html.ValidationMessageFor(model => model.TOTAL_PASIVOS, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Total patrimonio $</label>
+                        @Html.Editor("TOTAL_PATRIMONIO", new { htmlAttributes = new { @class = "form-control moneda maskMoney", placeholder = "Total patrimonio", @readonly = "readonly" } })
+				
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+
+                        <label>Ingreso mensuales $</label>
+                        @Html.EditorFor(m => m.INGRESOS_MENSUALES, new { htmlAttributes = new { @class = "form-control moneda soloLectura", placeholder = "Ingresos mensuales" } })
+						@Html.ValidationMessageFor(model => model.INGRESOS_MENSUALES, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Egresos mensuales $</label>
+                        @Html.EditorFor(m => m.EGRESOS_MENSUALES, new { htmlAttributes = new { @class = "form-control moneda soloLectura", placeholder = "Egresos mensuales" } })
+						@Html.ValidationMessageFor(model => model.EGRESOS_MENSUALES, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Otros ingresos mensuales $</label>
+                        @Html.EditorFor(m => m.OTROS_INGRESOS_MENSUALES, new { htmlAttributes = new { @class = "form-control moneda soloLectura", placeholder = "Otros ingresos mensuales" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+
+                        <label>Concepto de otros ingresos mensuales</label>
+                        @Html.EditorFor(m => m.OTROS_CONCEPTOS, new { htmlAttributes = new { @class = "form-control soloLectura", placeholder = "Concepto de otros ingresos mensuales" } })
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </div>
+

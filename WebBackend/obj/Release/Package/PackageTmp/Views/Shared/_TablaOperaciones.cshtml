@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Entidades.Operacion>
+
+@Html.Hidden("item-to-deletef", "", new { @id = "item-to-deletef" })
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Entidad Financiera</th>
+                <th>No. Producto</th>
+                <th>Tipo Producto</th>
+                <th>País</th>
+                <th>Ciudad</th>
+                @*<th>Acción</th>*@
+
+            </tr>
+        </thead>
+        @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+                <tbody>
+                    <tr>
+                        <td>@item.ENTIDAD_FINANCIERA </td>
+                        <td>@item.NUMERO_PRODUCTO </td>
+                        <td>@item.TIPO_PRODUCTO</td>
+                        <td>@item.PAIS</td>
+                        <td>@item.CIUDAD</td>
+                        @*<td><a href="" class="fa fa-trash delete" data-toggle="modal" data-target="#modalConfirmarOperacion" data-id="@item.ID_OPERACION" onclick="javascript: CargarModalFormacion('@item.ID_OPERACION');">Eliminar</a></td>*@
+                    </tr>
+
+                </tbody>
+        }
+    }
+    </table>
+</div>
+
+<div id="modalConfirmarOperacion" class="modal modal-vcenter fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Esta a punto de eliminar una operación internacional. <strong>Tenga en cuenta que esta acción no se puede revertir</strong>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="myDeleteForma" class="btn btn-danger" data-dismiss="modal" onclick="EliminarOperacion()">Eliminar</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>

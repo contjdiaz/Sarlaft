@@ -1,0 +1,286 @@
+﻿@model WebMVC.Models.OperacionPadreViewModel
+@{
+    ViewBag.Title = "Accionista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Persona Jurídica</h2>
+
+
+@using (Html.BeginForm("Accionista", "PersonaJuridica", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="x_panel">
+        <div class="x_title">
+            Información Administradores
+        </div>
+        <div class="x_content">
+            <div class="row">
+                @Html.HiddenFor(model => model.ID_PERSONA)
+                <div class="form-group col-md-12" style="text-align:right">
+
+                    <a href="#" id="btnAgregar" class="btn btn-icetex glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#modal_agregaraccionista" onclick="javascript: CargarModal();"> Adicionar administrador</a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div id="operacionTabla">
+                    @Html.Action("_TablaAccionista", new { Id = Model.ID_PERSONA, Eliminar = 0 })
+                </div>
+            </div>
+            <div class="row push-up-20">
+                <div class="col-md-12">
+
+                    <div id="panelAgregar">
+                        @Html.Action("_DatosAccionista", new { IdPersona = Model.ID_PERSONA })
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12" style="text-align:right">
+                    <input type="submit" name="btnAnterior" value="Anterior" class="btn btn-icetex" />
+                    <input type="submit" name="btnSiguiente" value="Siguiente" class="btn btn-icetex" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/icetex.js"></script>
+    <script type="text/javascript">
+        var today = new Date("01/31/1910");
+        $('.fecha').datepicker({
+            startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+            endDate: 'd',
+            format: 'dd/mm/yyyy'
+        })
+
+        $('#CARGO_RPEP').attr('data-live-search', true)
+
+        function ValidarAdministradores()
+		{
+
+			var ID_RELACIONADO_PEP = $("#ID_RELACIONADO_PEP").val();
+			if (ID_RELACIONADO_PEP <= 0) {
+				var url = '@Url.Action("CantidadAdministradores", "PersonaJuridica")';
+				var IdPersona = '@Model.ID_PERSONA';
+				$.ajax({
+					url: url,
+					type: 'GET',
+					dataType: 'json',
+					data: { IdPersona },
+					success: function (response) {
+						if (response >= 15) {
+							alert("Solo se permiten insertar 15 relacionados PEP")
+							return false;
+						} else {
+                            $("#modal_agregaraccionista").modal('show');
+
+                            GuardarAdministradores();
+                            $("#modal_agregaraccionista").modal('hide');
+						}
+					},
+					error: function (result) {
+						
+						alert('ERROR ' + result.status + ' ' + result.statusText);
+					}
+				});
+			} else
+			{
+				GuardarAdministradores();
+			}
+		}
+
+       function GuardarAdministradores()
+		{
+
+			  if ($('#ID_TIPO_REL_RPEP').val() == "") {
+                alert("El tipo de relación es obligatorio");
+                return false;
+            }
+
+            if ($('#ID_TIPO_DOCUMENTO_RPEP').val() == "") {
+                alert("El tipo de documento es obligatorio");
+                return false;
+            }
+
+
+            if ($('#DOCUMENTO_RPEP').val() == "") {
+                alert("El documento es obligatorio");
+                return false;
+            }
+
+            if ($('#PRIMER_NOMBRE_RPEP').val() == "") {
+                alert("El primer nombre es obligatorio");
+                return false;
+            }
+
+
+            if ($('#PRIMER_APELLIDO_RPEP').val() == "") {
+                alert("El número producto es obligatorio");
+                return false;
+            }
+
+
+
+            if ($('#NOMBRE_ENTIDAD_RPEP').val() == "") {
+                alert("El nombre de la entidad es obligatorio");
+                return false;
+            }
+
+            if ($('#CARGO_RPEP').val() == "") {
+                alert("El cargo es obligatorio");
+                return false;
+            }
+
+
+            var url = '@Url.Action("AgregarAccionista", "PersonaJuridica")';
+            var varpersonaid = '@Model.ID_PERSONA';
+            var varIdrelacionado = $('#ID_RELACIONADO_PEP').val();
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    id: varIdrelacionado, Id_persona: varpersonaid, Id_tipo_relacion: $('#ID_TIPO_REL_RPEP').val(), codigo_documento: $('#ID_TIPO_DOCUMENTO_RPEP').val(),
+                    documento: $('#DOCUMENTO_RPEP').val(), primer_nombre: $('#PRIMER_NOMBRE_RPEP').val(), segundo_nombre: $('#SEGUNDO_NOMBRE_RPEP').val(),
+                    primer_apellido: $('#PRIMER_APELLIDO_RPEP').val(), segundo_apellido: $('#SEGUNDO_APELLIDO_RPEP').val(), entidad: $('#NOMBRE_ENTIDAD_RPEP').val(),
+                    Id_cargo: $('#CARGO_RPEP').val(), fecha_vinculacion: $('#FEC_VINCULA_RPEP').val(), fecha_desvinculacion: $('#FEC_DESVINCULA_RPEP').val()
+                },
+                success: function (data) {
+                    if (data) {
+                        $(':input', '#myForm')
+                          .not(':button, :submit, :reset, :hidden')
+                          .val('')
+                          .removeAttr('checked')
+                          .removeAttr('selected');
+                        ActualizarTablaAdministrador(0);
+                    }
+                },
+
+            });
+		}
+
+        function CerrarAccionista() {
+            LimpiarCamposRelacionadoPep();
+
+            return false;
+        }
+
+        function LimpiarCamposRelacionadoPep() {
+            $('#PRIMER_NOMBRE_RPEP').val("");
+            $('#SEGUNDO_NOMBRE_RPEP').val("");
+            $('#PRIMER_APELLIDO_RPEP').val("");
+            $('#SEGUNDO_APELLIDO_RPEP').val("");
+            $('#NOMBRE_ENTIDAD_RPEP').val("");
+            $('#CARGO_RPEP').val("");
+            $('#FEC_VINCULA_RPEP').val("");
+            $('#FEC_DESVINCULA_RPEP').val("");
+            $('#FEC_DESVINCULA_CARGO_RPEP').val("");
+            $("#ID_TIPO_DOCUMENTO_RPEP").val("").change();
+            $("#ID_TIPO_REL_RPEP").val("").change();
+            $("#DOCUMENTO_RPEP").val("");
+            $("#ID_RELACIONADO_PEP").val("0");
+
+            var today = new Date("01/31/1910");
+            $('.fecha').datepicker({
+                startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+                endDate: 'd',
+                format: 'dd/mm/yyyy'
+            })
+
+        }
+        function ActualizarTablaAdministrador(vaerliminar) {
+            var varPersonaId =  '@Model.ID_PERSONA';
+            LimpiarCamposRelacionadoPep();
+
+            $.ajax({
+
+                url: "/PersonaJuridica/_TablaAccionista",
+                type: "GET",
+                data: { Id: varPersonaId, Eliminar: vaerliminar }
+            })
+           .done(function (partialViewResult) {
+               $("#operacionTabla").html(partialViewResult);
+               $('#item-to-deletef').val(0);
+
+               if (vaerliminar > 0) {
+                   $("#modalConfirmarPEP").modal('hide');
+                   $('body').removeClass('modal-open');
+                   $('.modal-backdrop').remove();
+               }
+
+           });
+
+        }
+
+        function EliminarAdministrador() {
+            var varid = $('#item-to-deletef').val();
+             ActualizarTablaAdministrador(varid);
+            return false;
+
+        }
+
+        function CargarModalFormacion(Id) {
+            $('#item-to-deletef').val(Id);
+
+        }
+
+        function CargarModal() {
+             var url = '@Url.Action("_DatosAccionista", "PersonaJuridica")';
+			$.ajax({
+				url: url,
+				type: 'GET',
+				data: {  },
+                success: function (response) {
+                    var today = new Date("01/31/1910");
+                    $('.fecha').datepicker({
+                        startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+                        endDate: 'd',
+                        format: 'dd/mm/yyyy'
+                    })
+				},
+				error: function (result) {
+					alert('ERROR ' + result.status + ' ' + result.statusText);
+				}
+			})
+			.done(function (partialViewResult) {
+                $("#panelAgregar").html(partialViewResult);
+                $('#modal_agregaraccionista').modal('show');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+
+			});
+
+        }
+
+       	function EditarRelacionadoPEP(idPep)
+		{
+
+			  var url = '@Url.Action("ConsultarAccionista", "PersonaJuridica")';
+			$.ajax({
+				url: url,
+				type: 'GET',
+				data: { IdRelacionadoPEP: idPep },
+				success: function (response) {
+				},
+				error: function (result) {
+					alert('ERROR ' + result.status + ' ' + result.statusText);
+				}
+			})
+			.done(function (partialViewResult) {
+                $("#panelAgregar").html(partialViewResult);
+                $('#modal_agregaraccionista').modal('show');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+			
+			});
+
+        }
+
+
+    </script>
+
+}

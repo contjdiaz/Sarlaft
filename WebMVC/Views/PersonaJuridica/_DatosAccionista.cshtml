@@ -1,0 +1,129 @@
+﻿@model WebMVC.Models.RelacionadoPepViewModel
+<div class="modal animated fadeIn" id="modal_agregaraccionista" tabindex="-1" role="dialog" aria-labelledby="smallModalHead" aria-hidden="true">
+ 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <div class="x_title">
+                        Información administrador
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="x_panel" id="relaciondoPEP">
+                        @Html.HiddenFor(model => model.ID_PERSONA_RPEP)
+                        @Html.HiddenFor(model => model.ID_RELACIONADO_PEP)
+                        <div class="x_content">
+                            <div class="row">
+
+                                <div class="row">
+                                    <p class="text-info"><i class="fa fa-info-circle"></i> Los accionista deben tener una participación mayor al 5%.</p>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Tipo administrador</label>
+                                        @Html.DropDownListFor(model => model.ID_TIPO_REL_RPEP, (SelectList)ViewBag.listadoTipoAdmin, "Seleccione", new { @class = "form-control " })
+                                        @Html.ValidationMessageFor(model => model.ID_TIPO_REL_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Primer nombre</label>
+                                        @Html.EditorFor(model => model.PRIMER_NOMBRE_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer nombre", @maxlength = "20" } })
+                                        @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Segundo nombre</label>
+                                        @Html.EditorFor(model => model.SEGUNDO_NOMBRE_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo nombre", @maxlength = "20" } })
+                                        @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+
+                                        <label>Primer apellido</label>
+                                        @Html.EditorFor(model => model.PRIMER_APELLIDO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer apellido", @maxlength = "20" } })
+                                        @Html.ValidationMessageFor(model => model.PRIMER_APELLIDO_RPEP, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-6" style="margin-bottom:10px">
+
+                                        <label>Segundo apellido</label>
+                                        @Html.EditorFor(model => model.SEGUNDO_APELLIDO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo apellido", @maxlength = "20" } })
+                                        @Html.ValidationMessageFor(model => model.SEGUNDO_APELLIDO_RPEP, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Identificación</label>
+                                        @Html.DropDownListFor(model => model.ID_TIPO_DOCUMENTO_RPEP, (SelectList)ViewBag.ListaTipoIden, "Seleccione", new { @class = "form-control " })
+                                        @Html.ValidationMessageFor(model => model.ID_TIPO_DOCUMENTO_RPEP, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Número identificación</label>
+                                        @Html.EditorFor(model => model.DOCUMENTO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Número identificación", @maxlength = "20" } })
+                                        @Html.ValidationMessageFor(model => model.DOCUMENTO_RPEP, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Entidad</label>
+                                        @Html.EditorFor(model => model.NOMBRE_ENTIDAD_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Entidad", @maxlength = "100" } })
+                                        @Html.ValidationMessageFor(model => model.NOMBRE_ENTIDAD_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Cargo u ocupación</label>
+                                        @Html.DropDownListFor(model => model.CARGO_RPEP, (SelectList)ViewBag.listadoCargos, "Seleccione", new { @class = "form-control select" })
+                                        @Html.ValidationMessageFor(model => model.CARGO_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Fecha de vinculación PEP</label>
+                                        @Html.EditorFor(model => model.FEC_VINCULA_RPEP, new { htmlAttributes = new { @class = "form-control fecha", placeholder = "Fecha vinculación cargo PEP" } })
+                                        @Html.ValidationMessageFor(model => model.FEC_VINCULA_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Fecha de desviculación PEP</label>
+                                        @Html.EditorFor(model => model.FEC_DESVINCULA_RPEP, new { htmlAttributes = new { @class = "form-control fecha", placeholder = "Fecha desvinculación cargo PEP" } })
+                                        @Html.ValidationMessageFor(model => model.FEC_DESVINCULA_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:10px">
+                                        <label>Fecha final PEP</label>
+                                        @Html.EditorFor(model => model.FEC_DESVINCULA_CARGO_RPEP, new { htmlAttributes = new { @class = "form-control fecha", placeholder = "Fecha desvinculación PEP", disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.FEC_DESVINCULA_CARGO_RPEP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12" style="text-align:right">
+                                        <button type="submit" class="btn btn-icetex" id="btnCerrarAccionista" data-dismiss="modal" onclick="CerrarAccionista()">Cerrar</button>	
+                                        <button type="submit" class="btn btn-icetex" id="btnGuardarAccionista" data-dismiss="modal" onclick="ValidarAdministradores()">Guardar</button>						
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    var today = new Date("01/31/1910");
+    $('.fecha').datepicker({
+        startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        endDate: 'd',
+        format: 'dd/mm/yyyy'
+    })
+
+    $('#FEC_DESVINCULA_RPEP').change(function () {
+        CalcularFechaPep($("#FEC_DESVINCULA_RPEP"), $("#FEC_DESVINCULA_CARGO_RPEP"));
+    });
+
+   
+</script>

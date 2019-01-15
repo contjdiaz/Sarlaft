@@ -1,0 +1,51 @@
+﻿@model WebBackend.Models.PersonaViewModel
+@Html.HiddenFor(model => model.ID_MUNICIPIO)
+@Html.HiddenFor(model => model.IdPersonaViewModel)
+@Html.HiddenFor(model => model.ID_TIPO_DOCUMENTO)
+@Html.HiddenFor(model => model.ID_TIPO_PERSONA)
+@Html.HiddenFor(model => model.NUMERO_DOCUMENTO)
+@Html.HiddenFor(model => model.TOTAL_ACTIVOS)
+@Html.HiddenFor(model => model.TOTAL_PASIVOS)
+@Html.HiddenFor(model => model.TOTAL_PATRIMONIO)
+@Html.HiddenFor(model => model.OTROS_CONCEPTOS)
+@Html.HiddenFor(model => model.OTROS_INGRESOS_MENSUALES)
+@Html.HiddenFor(model => model.INGRESOS_MENSUALES)
+@Html.HiddenFor(model => model.EGRESOS_MENSUALES)
+		<div class="row">
+			<div class="form-group">
+				<div class=" col-md-12">
+					<label>Declaración De Origen De Bienes</label>
+					@Html.TextArea("DeclaracionOrigen", "DECLARO QUE ESTOS RECURSOS NO PROVIENENE DE NINGUNA ACTIVIDAD ILÍCITA DE LAS CONTEMPLADAS " +
+"EN EL CÓDIGO PENAL COLOMBIANO O EN CUALQUIERA NORMA QUE LO MODIFIQUE O ADICIONE ", new { @class = "form-control", @rows = "4", @cols = "12", @readonly = true })
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label>Acepto Declaración</label>
+				@Html.CheckBoxFor(model => model.DECLARACION_BIENES)
+				@Html.ValidationMessageFor(model => model.DECLARACION_BIENES, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label>Cláusula De Autorizaciones</label>
+				@Html.TextArea("ClausulaAutorizaciones","DE MANERA PREVIA, EXPRESA E INFORMADA AUTORIZO EL TRATAMIENTO DE MIS DATOS PERSONALES PARA " +
+			   "LAS FINALIDADES Y EN LOS TÉRMINOS QUE NO FUERON INFORMADOS EN ESTE FORMULARIO", new { @class = "form-control", @rows = "4", @cols = "12", @readonly = true })
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label>Acepto Cláusula</label>
+				@Html.CheckBoxFor(model=>model.AUTORIZACION_DATOS)
+				@Html.ValidationMessageFor(model => model.AUTORIZACION_DATOS, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12" style="text-align:right">
+				<input type="submit" name="btnAnterior" value="Anterior" class="btn btn-icetex" />			
+		
+			</div>
+		</div>
+

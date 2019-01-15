@@ -1,0 +1,74 @@
+﻿@model WebMVC.Models.PersonaViewModel
+
+@using (Html.BeginForm("AceptacionTerminos", "PersonaNatural", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+<div class="x_panel">
+	<div class="x_title">
+		
+	</div>
+
+	<div class="x_content">
+
+	@Html.Partial("~/Views/Shared/_AceptacionTerminos.cshtml")
+		</div>
+	</div>
+
+}
+
+
+@section Scripts {
+	<script type="text/javascript">
+		$('#btnImprimir').click(function () {
+
+			if (!$('#AUTORIZACION_DATOS').is(":checked") || !$("#DECLARACION_BIENES").is(":checked")) {
+				alert("Debe aceptar declaración de bienes y cláusula de autorizaciones para almacenar formulario");
+				return false;
+			}
+		});
+
+		$('#btnGuardar').click(function () {
+			debugger;
+
+			if (!$('#AUTORIZACION_DATOS').is(":checked") || !$("#DECLARACION_BIENES").is(":checked")) {
+				alert("Debe aceptar declaración de bienes y cláusula de autorizaciones para almacenar formulario");
+				$("#btnImprimir").attr('disabled', 'disabled');
+				return false;
+			}
+		
+			var patrimonio = $("#TOTAL_ACTIVOS").val() - $("#TOTAL_PASIVOS").val();
+
+			var url = '@Url.Action("AceptacionTerminos", "PersonaNatural")';
+			
+			var PersonaViewModel = {
+				ID_PERSONA: $("#ID_PERSONA").val(),
+				IdPersonaViewModel: $("#IdPersonaViewModel").val(),			
+				ID_TIPO_PERSONA: $("#ID_TIPO_PERSONA").val(),
+				ID_TIPO_DOCUMENTO: $("#ID_TIPO_DOCUMENTO").val(),
+				NUMERO_DOCUMENTO: $("#NUMERO_DOCUMENTO").val(),
+				DECLARACION_BIENES: $("#DECLARACION_BIENES").val(),
+				AUTORIZACION_DATOS: $("#AUTORIZACION_DATOS").val(),
+				ID_MUNICIPIO: $("#ID_MUNICIPIO").val(),
+				TOTAL_ACTIVOS: $("#TOTAL_ACTIVOS").val(),
+				TOTAL_PASIVOS: $("#TOTAL_PASIVOS").val(),
+				TOTAL_PATRIMONIO: patrimonio,
+				INGRESOS_MENSUALES: $("#INGRESOS_MENSUALES").val(),
+				EGRESOS_MENSUALES: $("#EGRESOS_MENSUALES").val(),
+				OTROS_INGRESOS_MENSUALES : $("#OTROS_INGRESOS_MENSUALES").val(),
+				OTROS_CONCEPTOS : $("#OTROS_CONCEPTOS").val()
+			};
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: PersonaViewModel,
+				success: function (data) {
+					debugger;
+					if (!data) {
+						alert("Error al guardar los datos")						
+					}
+					$("#btnImprimir").removeAttr("disabled");
+					alert("Datos guardados");
+				},
+			});
+		});
+	</script>
+}

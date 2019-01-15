@@ -1,0 +1,100 @@
+﻿@model WebBackend.Models.RelacionadoPepViewModel
+@using (Html.BeginForm())
+{
+<div id="relaciondoPEP">
+		<div class="x_title">
+			Datos de identificación de los relacionados del PEP
+		
+		</div>
+
+		<div class="x_content">
+			@Html.HiddenFor(model => model.ID_RELACIONADO_PEP)
+			<div class="row">
+				<div class="col-md-6" style="margin-bottom:10px">				
+						<label>Relación</label>
+						@Html.DropDownListFor(model => model.ID_TIPO_REL_RPEP, (SelectList)ViewBag.ListRelacionPEP, "Seleccione un valor", new { @class = "form-control" })					
+				</div>
+				<div class="col-md-6" style="margin-bottom:10px">					
+						<label>Primer nombre</label>
+						@Html.EditorFor(model => model.PRIMER_NOMBRE_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer nombre" } })					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6" style="margin-bottom:10px">					
+						<label>Segundo nombre</label>
+						@Html.EditorFor(model => model.SEGUNDO_NOMBRE_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo nombre" } })					
+				</div>
+				<div class="col-md-6" style="margin-bottom:10px">					
+						<label>Primer apellido</label>
+						@Html.EditorFor(model => model.PRIMER_APELLIDO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Primer apellido" } })					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6" style="margin-bottom:10px">					
+						<label>Segundo apellido</label>
+						@Html.EditorFor(model => model.SEGUNDO_APELLIDO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Segundo apellido" } })					
+				</div>
+				<div class="col-md-6" style="margin-bottom:10px">				
+						<label>Tipo identificación</label>
+						@Html.DropDownListFor(model => model.ID_TIPO_DOCUMENTO_RPEP, (SelectList)ViewBag.ListaTipoIden, "Seleccione un valor", new { @class = "form-control" })				
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6" style="margin-bottom:10px">		
+						<label>No. identificación</label>
+						@Html.EditorFor(model => model.DOCUMENTO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "No. identificación" } })				
+				</div>
+				<div class="col-md-6" style="margin-bottom:10px">					
+						<label>Entidad</label>
+						@Html.EditorFor(model => model.NOMBRE_ENTIDAD_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Entidad" } })				
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6" style="margin-bottom:10px">			
+						<label>Cargo u ocupación</label>
+					@Html.EditorFor(model => model.CARGO_RPEP, new { htmlAttributes = new { @class = "form-control", placeholder = "Cargo" } })											
+				</div>	
+				<div class=" col-md-6">
+					<label>Fecha de vinculación PEP</label>
+					@Html.EditorFor(model => model.FEC_VINCULA_RPEP, new { htmlAttributes = new { @class = "form-control datepicker fecha" } })
+				</div>
+			</div>		
+			<div class="row">				
+				<div class=" col-md-6">
+					<label>Fecha de desvinculación PEP</label>
+					@Html.EditorFor(model => model.FEC_DESVINCULA_RPEP, new { htmlAttributes = new { @class = "form-control datepicker fecha" } })
+				</div>
+
+				<div class=" col-md-6">
+					<label>Fecha final PEP</label>
+					@Html.EditorFor(model => model.FEC_DESVINCULA_CARGO_RPEP, new { htmlAttributes = new { @class = "form-control datepicker fecha", @disabled = "disabled" } })
+				</div>
+			</div>
+			<br />
+				<div class="row">
+					<div class=" col-md-12" style="margin-bottom:10px">
+						<div style="text-align:right">
+                            @*@Html.ActionLink("WSSarlaft", "WSrequest", "WSSarlaft")*@
+							<button type="button" class="btn btn-icetex" data-dismiss="modal" onclick="CerrarVentanaPEP()" >Cerrar</button>
+							<button type="submit" class="btn btn-icetex" id="btnGuardarRelPEP" data-dismiss="modal"  onclick="ValidarGuardadoRelacionadoPEP()">Guardar</button>						
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var today = new Date("01/31/1910");
+			$('.fecha').datepicker({
+				startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+				endDate: 'd',
+				format: 'dd/mm/yyyy'
+			})
+
+</script>
+}

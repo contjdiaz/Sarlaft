@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Entidades.TipoDocumento>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Tipo documento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="form-group col-md-12" style="text-align:right">
+
+        <button type="button" id="btnAgregarTipoDoc" class="btn btn-icetex" data-toggle="modal" data-target="#modalNuevoTipoDoc" onclick="LimpiarCamposTipoDoc()">Adicionar Tipo Documento</button>
+    </div>
+</div>
+
+@using (Html.BeginForm("Index", "TipoDocumento", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="x_panel">
+        <div class="row">
+            
+            @Html.Grid(Model).Columns(columns =>
+                {
+                    columns.Add(p => p.NOMBRE_TIPO_DOCUMENTO).Titled("Tipo Documento").SetWidth(100);
+                    columns.Add(p => p.CODIGO).Titled("Código").SetWidth(80);
+                    columns.Add()
+                      .Encoded(false)
+                      .Sanitized(false)
+                      .SetWidth(30)
+                      .RenderValueAs(p => Html.ActionLink("Ver", "Editar", "TipoDocumento", new { idTipodocumento = p.ID_TIPO_DOCUMENTO }, new { @class = "modal-link" }));
+                }).WithPaging(20)
+        </div>
+    </div>
+
+
+}
+
+<div id="modalNuevoTipoDoc" class="modal fade modal-container" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                @Html.Partial("~/Views/TipoDocumento/_Crear.cshtml", new WebBackend.Models.TipoDocumentoViewModel())
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalTipoDoc" class="modal fade modal-container" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="modalTipoDocContainer">
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+}

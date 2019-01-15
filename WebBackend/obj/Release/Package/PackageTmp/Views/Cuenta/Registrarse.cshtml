@@ -1,0 +1,97 @@
+﻿@model WebBackend.Models.UsuarioViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = "~/Views/Shared/_LayoutCuenta.cshtml";
+}
+
+@using (Html.BeginForm("Registrarse", "Cuenta", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="x_panel">
+        <h2>Registrarse</h2>
+        @Html.HiddenFor(model => model.ID_USUARIO)
+        @Html.HiddenFor(model => model.ID_USUARIO_ACCION)
+
+  
+        <div class="x_title">
+            Datos Básicos
+        </div>
+        <div class="x_content">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Datos identificación</div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Nombres</label>
+                                    @Html.EditorFor(model => model.NOMBRES_USUARIO, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombres", @maxlength = "40" } })
+                                    @Html.ValidationMessageFor(model => model.NOMBRES_USUARIO, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Apellidos</label>
+                                    @Html.EditorFor(model => model.APELLIDOS_USUARIO, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellidos", @maxlength = "40" } })
+                                    @Html.ValidationMessageFor(model => model.APELLIDOS_USUARIO, "", new { @class = "text-danger" })
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Datos de autenticación</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Correo electrónico</label>
+                                    @Html.EditorFor(model => model.EMAIL_USUARIO, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo electrónico", @maxlength = "40" } })
+                                    @Html.ValidationMessageFor(model => model.EMAIL_USUARIO, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Contraseña</label>           
+                                    @Html.PasswordFor(m => m.PASSWORD_USUARIO, new { @class = "form-control", autocomplete = "off", placeholder = "Contraseña" })
+                                    @Html.ValidationMessageFor(model => model.PASSWORD_USUARIO, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Confirmar contraseña</label>
+                                    @Html.PasswordFor(m => m.CONFIRMAR_CONTRASENA, new { @class = "form-control", autocomplete = "off", placeholder = "Confirmar contraseña" })
+                                    @Html.ValidationMessageFor(model => model.CONFIRMAR_CONTRASENA, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="col-md-6">
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+   
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group col-md-12" style="text-align:right">
+                    @Html.ActionLink("Regresar", "IniciarSesion", "Cuenta", "", new { @class = "btn btn-icetex" })
+                    <button type="submit" name="btnSiguiente" class="btn btn-icetex">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

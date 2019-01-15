@@ -1,0 +1,50 @@
+﻿@model  WebBackend.Models.TipoDocumentoViewModel
+<div class="x_panel">
+    @using (Html.BeginForm("Crear", "TipoDocumento",new { @class = "form-horizontal", role = "form" } ))
+    {
+
+        @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Tipo Documento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger", @id = "valSumaryTipoDoc" })
+        <label id="lblError"></label>
+    
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.CODIGO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CODIGO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CODIGO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOMBRE_TIPO_DOCUMENTO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.NOMBRE_TIPO_DOCUMENTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOMBRE_TIPO_DOCUMENTO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CODIGO_TIPO_PERSONA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.CODIGO_TIPO_PERSONA, (SelectList)ViewBag.ListaTipoPersona, "Seleccione un valor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CODIGO_TIPO_PERSONA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button type="button" class="btn btn-icetex" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-icetex">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    }
+    @*</form>*@
+</div>
+
+
+

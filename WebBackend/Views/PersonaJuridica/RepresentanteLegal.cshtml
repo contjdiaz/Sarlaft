@@ -1,0 +1,397 @@
+﻿@model WebBackend.Models.RepresentanteLegalViewModel
+
+@{
+    ViewBag.Title = "RepresentanteLegal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RepresentanteLegal", "PersonaJuridica", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="x_panel">
+
+        <h2>Persona Jurídica</h2>
+
+        <div class="x_title">
+            Representante Legal
+
+        </div>
+        <div class="x_content">
+            <div class="panel-group">
+                @Html.HiddenFor(m=> m.RelacionadosPep)  
+                <div id="DatosRepresentante">
+                    @Html.Partial("_DatosRepresentante", Model)
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Persona públicamente expuesta</div>
+                    <div class="panel-body">
+                        @Html.Partial("~/Views/Shared/_RepresentanteExpuestaPoliticamente.cshtml")
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group col-md-12" style="text-align:right">
+
+                    @Html.ActionLink("Anterior", "PersonaJuridica", "PersonaJuridica", new { Id = Model.ID_PERSONA_JURIDICA }, new { @class = "btn btn-icetex" })
+                    <input type="submit" name="btnSiguiente" value="Siguiente" class="btn btn-icetex" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/icetex.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.maskMoney.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.mask.js")"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var today = new Date("01/31/1910");
+            $('.fecha').datepicker({
+                startDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+                endDate: 'd',
+                format: 'dd/mm/yyyy'
+            })
+
+            $('#ID_CARGO_PEP').attr('data-live-search', true)
+            $('.numero').maskMoney({ symbol: '', thousands: '', decimal: '', precision: 0 });
+
+            if ($('#ID_DEP_EXPEDICION').val() != "") CargarCiudades($('#ID_DEP_EXPEDICION').val(), $('#ID_MCPO_EXPEDICION'));
+            if ($('#ID_DEP_NACIMIENTO').val() != "") CargarCiudades($('#ID_DEP_NACIMIENTO').val(), $('#ID_MCPO_NACIMIENTO'));
+            if ($('#ID_DEP_RESIDENCIA').val() != "") CargarCiudades($('#ID_DEP_RESIDENCIA').val(), $('#ID_MCPO_RESIDENCIA'));
+
+                     
+            $("#FEC_NACIMIENTO").change(function () {
+                if ($("#FEC_NACIMIENTO").val() != "") {
+                    var edad = calculate_age($("#FEC_NACIMIENTO").val());
+
+                    if (edad < 18) {
+                        $("#FEC_NACIMIENTO").val("");
+                        alert("La edad mínima es 18 años");
+                    }
+                }
+            });
+            HabilitarBotonAgregarPEP();
+
+            $(function () {
+                if ($('#FEC_DESVINCULA_PEP').val() != "") {
+                    CalcularFechaPep($("#FEC_DESVINCULA_PEP"), $("#FechaDesvCargoPep"));
+                }
+            });
+            $(function () {
+                if ($('#FEC_DESVINCULA_RPEP').val() != "") {
+                    CalcularFechaPep($("#FEC_DESVINCULA_RPEP"), $("#FEC_DESVINCULA_CARGO_RPEP"));
+                }
+            });
+
+
+        });
+
+        $(".addPEP").change(function () {
+            HabilitarBotonAgregarPEP();
+        })
+
+        $('#FEC_DESVINCULA_RPEP').change(function () {
+            CalcularFechaPep($("#FEC_DESVINCULA_RPEP"), $("#FEC_DESVINCULA_CARGO_RPEP"));
+        });
+
+        $('#FEC_DESVINCULA_PEP').change(function () {
+            CalcularFechaPep($("#FEC_DESVINCULA_PEP"), $("#FechaDesvCargoPep"));
+        });
+
+        $('#NUMERO_DOCUMENTO').change(function () {
+            if ($('#nuevo').val() == "1") {
+                if ($('#ID_TIPO_DOCUMENTO').val() == "") {
+                    alert("El tipo de documento es obligatorio");
+                    return false;
+                }
+                var varPersonaId = '@Model.ID_PERSONA_JURIDICA';
+                var varjuridicaId = '@Model.ID_JURIDICA';
+                $.ajax({
+
+                    url: "/PersonaJuridica/CargarRepresentante",
+                    type: "GET",
+                    data: { tipo: $('#ID_TIPO_DOCUMENTO').val(), documento: $('#NUMERO_DOCUMENTO').val(), IdPersona: varPersonaId, IdJuridica: varjuridicaId }
+                })
+                    .done(function (partialViewResult) {
+                        $("#DatosRepresentante").html(partialViewResult);
+
+
+                    });
+            }
+        });
+
+        $('#ID_TIPO_DOCUMENTO').change(function () {
+            if ($('#nuevo').val() == "1") {
+                if ($('#NUMERO_DOCUMENTO').val() == "") {
+                    alert("El número documento es obligatorio");
+                    return false;
+                }
+                var varPersonaId = '@Model.ID_PERSONA_JURIDICA';
+                var varjuridicaId = '@Model.ID_JURIDICA';
+                $.ajax({
+
+                    url: "/PersonaJuridica/CargarRepresentante",
+                    type: "GET",
+                    data: { tipo: $('#ID_TIPO_DOCUMENTO').val(), documento: $('#NUMERO_DOCUMENTO').val(), IdPersona: varPersonaId, IdJuridica: varjuridicaId }
+                })
+                    .done(function (partialViewResult) {
+                        $("#DatosRepresentante").html(partialViewResult);
+
+
+                    });
+            }
+        });
+
+
+        $(function () {
+            $('#ID_DEP_EXPEDICION').change(function () {
+                $('#ID_MCPO_EXPEDICION').empty();
+                CargarCiudades($('#ID_DEP_EXPEDICION').val(), $('#ID_MCPO_EXPEDICION'));
+                return false;
+            })
+
+        });
+
+        $(function () {
+            $('#ID_DEP_NACIMIENTO').change(function () {
+                $('#ID_MCPO_NACIMIENTO').empty();
+                CargarCiudades($('#ID_DEP_NACIMIENTO').val(), $('#ID_MCPO_NACIMIENTO'));
+                return false;
+            })
+
+        });
+
+        $(function () {
+            $('#ID_DEP_RESIDENCIA').change(function () {
+                $('#ID_MCPO_RESIDENCIA').empty();
+                CargarCiudades($('#ID_DEP_RESIDENCIA').val(), $('#ID_MCPO_RESIDENCIA'));
+                return false;
+            })
+
+        });
+
+
+
+        $(".addPEP").change(function () {
+            HabilitarBotonAgregarPEP();
+        })
+
+       //Relacionados PEP
+function ValidarGuardadoRelacionadoPEP() {
+    debugger;
+    var ID_RELACIONADO_PEP = $("#ID_RELACIONADO_PEP").val();
+    if (ID_RELACIONADO_PEP <= 0) {
+        //var url = '@Url.Action("", "PersonaNatural")';
+        var IdPer = $("#ID_PERSONA").val();
+        $.ajax({
+            url: '/PersonaNatural/CantidadRelacionadosPEP' ,
+            type: 'GET',
+            dataType: 'json',
+            data: { IdPersona: IdPer },
+            success: function (response) {
+                debugger;
+                if (response >= 15) {
+                    alert("Solo se permiten insertar 15 relacionados PEP")
+                    return false;
+                } else {
+                    $("#modalIRPEP").modal('show');
+                    GuardarRelacionadoPEP();
+                }
+            },
+            error: function (result) {
+                debugger;
+                alert('ERROR ' + result.status + ' ' + result.statusText);
+            }
+        });
+    } else {
+        GuardarRelacionadoPEP();
+    }
+}
+
+function GuardarRelacionadoPEP() {
+
+    if ($('#ID_TIPO_REL_RPEP').val() == "") {
+        alert("El tipo de relación es obligatorio");
+        return false;
+    }
+
+    if ($('#ID_TIPO_DOCUMENTO_RPEP').val() == "") {
+        alert("El tipo de documento es obligatorio");
+        return false;
+    }
+
+    if ($('#DOCUMENTO_RPEP').val() == "") {
+        alert("El documento es obligatorio");
+        return false;
+    }
+    if ($('#PRIMER_NOMBRE_RPEP').val() == "") {
+        alert("El primer nombre es obligatorio");
+        return false;
+    }
+
+    if ($('#PRIMER_APELLIDO_RPEP').val() == "") {
+        alert("El primer apellido es obligatorio");
+        return false;
+    }
+
+
+    var RelacionadoPepViewModel =
+        {
+            ID_RELACIONADO_PEP: $("#ID_RELACIONADO_PEP").val(),
+            ID_PERSONA_RPEP: $("#ID_PERSONA").val(),
+            ID_TIPO_REL_RPEP: $("#ID_TIPO_REL_RPEP").val(),
+            Relacion_RPEP: $("#ID_TIPO_REL_RPEP option:selected").text(),
+            ID_TIPO_DOCUMENTO_RPEP: $("#ID_TIPO_DOCUMENTO_RPEP").val(),
+            TipoDocumento_RPEP: $("#ID_TIPO_DOCUMENTO_RPEP option:selected").text(),
+            DOCUMENTO_RPEP: $("#DOCUMENTO_RPEP").val(),
+            PRIMER_NOMBRE_RPEP: $("#PRIMER_NOMBRE_RPEP").val(),
+            SEGUNDO_NOMBRE_RPEP: $("#SEGUNDO_NOMBRE_RPEP").val(),
+            PRIMER_APELLIDO_RPEP: $("#PRIMER_APELLIDO_RPEP").val(),
+            SEGUNDO_APELLIDO_RPEP: $("#SEGUNDO_APELLIDO_RPEP").val(),
+            NOMBRE_ENTIDAD_RPEP: $("#NOMBRE_ENTIDAD_RPEP").val(),
+            CARGO_RPEP: $("#CARGO_RPEP").val(),
+            FEC_VINCULA_RPEP: $("#FEC_VINCULA_RPEP").val(),
+            FEC_DESVINCULA_RPEP: $("#FEC_DESVINCULA_RPEP").val(),
+            Eliminar: false
+        };
+
+    var data = JSON.stringify(RelacionadoPepViewModel);
+    $.ajax({
+        url: '/PersonaNatural/AdicionarRelacionadosPEP',
+        type: 'POST',
+        data: RelacionadoPepViewModel,
+        success: function (data) {
+            if (data) {
+                debugger;
+                $(':input', '#myForm')
+                    .not(':button, :submit, :reset, :hidden')
+                    .val('')
+                    .removeAttr('checked')
+                    .removeAttr('selected');
+                LimpiarCamposRelacionadoPep();
+            }
+        },
+    })
+        .done(function (partialViewResult) {
+            $("#operacionTabla").html(partialViewResult);
+            $('#item-to-deletef').val(0);
+            $("#modalIRPEP").modal('hide');
+            $('.modal-backdrop').remove();
+        });
+}
+
+function CerrarVentanaPEP() {
+    LimpiarCamposRelacionadoPep();
+    $("#modalIRPEP").modal('hide');
+    $('.modal-backdrop').remove();
+}
+
+function EditarRelacionadoPEP(idPep) {
+    debugger;
+
+    $.ajax({
+        url: '/PersonaNatural/ConsultarRelacionadoPEP',
+        type: 'GET',
+        data: { IdRelacionadoPEP: idPep },
+        success: function (data) {
+            debugger;
+            if (data != "") {
+                $("#ID_RELACIONADO_PEP").val(data["ID_RELACIONADO_PEP"]);
+                $("#ID_TIPO_REL_RPEP").val(data["ID_TIPO_REL_RPEP"]);
+                $("#ID_TIPO_DOCUMENTO_RPEP").val(data["ID_TIPO_DOCUMENTO_RPEP"]);
+                $("#DOCUMENTO_RPEP").val(data["DOCUMENTO_RPEP"]);
+                $("#PRIMER_NOMBRE_RPEP").val(data["PRIMER_NOMBRE_RPEP"]);
+                $("#SEGUNDO_NOMBRE_RPEP").val(data["SEGUNDO_NOMBRE_RPEP"]);
+                $("#PRIMER_APELLIDO_RPEP").val(data["PRIMER_APELLIDO_RPEP"]);
+                $("#SEGUNDO_APELLIDO_RPEP").val(data["SEGUNDO_APELLIDO_RPEP"]);
+                $("#NOMBRE_ENTIDAD_RPEP").val(data["NOMBRE_ENTIDAD_RPEP"]);
+                $("#CARGO_RPEP").val(data["CARGO_RPEP"]);
+                $("#FEC_VINCULA_RPEP").val(data["FEC_VINCULA_RPEP"]);
+                $("#FEC_DESVINCULA_RPEP").val(data["FEC_DESVINCULA_RPEP"]);
+
+                if ($('#FEC_DESVINCULA_RPEP').val() != "") {
+                    CalcularFechaPep($("#FEC_DESVINCULA_RPEP"), $("#FEC_DESVINCULA_CARGO_RPEP"));
+                }
+
+            }
+            else {
+                alert('ERROR al cargar los datos');
+            }
+        },
+        error: function (result) {
+            if (result.status = 200) {
+                $("#modalIRPEP").modal('hide');
+                alert('ERROR al cargar los datos');
+            } else {
+                alert('ERROR ' + result.status + ' ' + result.statusText);
+            }
+        }
+    });
+}
+
+function ActualizarTablaOperacion(vaerliminar) {
+    var varPersonaId = $("#ID_PERSONA").val();
+    LimpiarCamposRelacionadoPep();
+
+    $.ajax({
+        url: "/PersonaNatural/_TablaRelacionadosPEP",
+        type: "GET",
+        data: { Id: varPersonaId, Eliminar: vaerliminar },
+        success: function (data) { debugger; }
+    })
+        .done(function (partialViewResult) {
+            $("#operacionTabla").html(partialViewResult);
+            $('#item-to-deletef').val(0);
+
+            if (vaerliminar != 0) {
+                $("#modalConfirmarPEP").modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            }
+        });
+}
+
+function LimpiarCamposRelacionadoPep() {
+    $('#PRIMER_NOMBRE_RPEP').val("");
+    $('#PRIMER_NOMBRE_RPEP').val("");
+    $('#SEGUNDO_NOMBRE_RPEP').val("");
+    $('#PRIMER_APELLIDO_RPEP').val("");
+    $('#SEGUNDO_APELLIDO_RPEP').val("");
+    $('#NOMBRE_ENTIDAD_RPEP').val("");
+    $('#CARGO_RPEP').val("");
+    $('#FEC_VINCULA_RPEP').val("");
+    $('#FEC_DESVINCULA_RPEP').val("");
+    $("#ID_TIPO_DOCUMENTO_RPEP").val("").change();
+    $("#ID_TIPO_REL_RPEP").val("").change();
+    $("#DOCUMENTO_RPEP").val("");
+    $("#FEC_DESVINCULA_RPEP").val("");
+    $("#FEC_DESVINCULA_CARGO_RPEP").val("");
+    $("#ID_RELACIONADO_PEP").val("");
+}
+
+function EliminarOperacion() {
+    var varid = $('#item-to-deletef').val();
+    ActualizarTablaOperacion(varid);
+    return false;
+}
+
+function CargarModalFormacion(Id) {
+    $('#item-to-deletef').val(Id);
+}
+//Fin Relacionados PEP
+
+
+    </script>
+
+}

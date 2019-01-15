@@ -1,0 +1,21 @@
+﻿@model WebBackend.Models.PersonaViewModel
+
+@using (Html.BeginForm("AceptacionTerminos", "PersonaNatural", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+<div class="x_panel">
+	<div class="x_title">
+		
+	</div>
+
+	<div class="x_content">
+
+	@Html.Partial("~/Views/Shared/_AceptacionTerminos.cshtml")
+		</div>
+	</div>
+
+}
+
+
+@section Scripts {
+
+}

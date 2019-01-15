@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Entidades.Objeto>
+
+@{
+    ViewBag.Title = "Íncide Objetos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Objeto", "Create", null, new { @class = "btn btn-default" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_TIPO_OBJETO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_OBJETO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UBICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORIGEN_OBJETO)
+        </th>
+        <th>Acción</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_TIPO_OBJETO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_OBJETO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UBICACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORIGEN_OBJETO)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "Edit", new { id=item.ID_OBJETO }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID_OBJETO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_OBJETO }, new { onclick = "return confirm('Está seguro');" })
+        </td>
+    </tr>
+}
+
+</table>

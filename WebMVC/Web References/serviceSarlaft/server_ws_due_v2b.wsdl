@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:/due/ws_due/server_ws_due_v2b.php" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:/due/ws_due/server_ws_due_v2b.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:/due/ws_due/server_ws_due_v2b.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="DatosWsDue">
+        <xsd:all>
+          <xsd:element name="cod_emp" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+          <xsd:element name="llave_id" type="xsd:string" />
+          <xsd:element name="nombres" type="xsd:string" />
+          <xsd:element name="apellidos" type="xsd:string" />
+          <xsd:element name="division" type="xsd:string" />
+          <xsd:element name="identificacion" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DatosWsDueArray">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:DatosWsDue[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="DetalleOtros">
+        <xsd:all>
+          <xsd:element name="hecho" type="xsd:string" />
+          <xsd:element name="fuente" type="xsd:string" />
+          <xsd:element name="informacion" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DetalleOtrosArray">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:DetalleOtros[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Respuesta">
+        <xsd:all>
+          <xsd:element name="lista_clinton" type="xsd:string" />
+          <xsd:element name="otros_organismos" type="xsd:string" />
+          <xsd:element name="link" type="xsd:string" />
+          <xsd:element name="detalle_otros" type="xsd:string" />
+          <xsd:element name="detalle_us" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaArray">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:Respuesta[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getDatosWsDueRequest">
+    <wsdl:part name="Datos" type="tns:DatosWsDue" />
+  </wsdl:message>
+  <wsdl:message name="getDatosWsDueResponse">
+    <wsdl:part name="return" type="tns:Respuesta" />
+  </wsdl:message>
+  <wsdl:portType name="addressbook1PortType">
+    <wsdl:operation name="getDatosWsDue">
+      <documentation>Insertar Datos WS Due</documentation>
+      <wsdl:input message="tns:getDatosWsDueRequest" />
+      <wsdl:output message="tns:getDatosWsDueResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="addressbook1Binding" type="tns:addressbook1PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getDatosWsDue">
+      <soap:operation soapAction="uri:DatosWsDue/getDatosWsDue" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="uri:DatosWsDue" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="uri:DatosWsDue" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="addressbook1">
+    <wsdl:port name="addressbook1Port" binding="tns:addressbook1Binding">
+      <soap:address location="http://batch.duediligence.net.co/due/ws_due/server_ws_due_v2b.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

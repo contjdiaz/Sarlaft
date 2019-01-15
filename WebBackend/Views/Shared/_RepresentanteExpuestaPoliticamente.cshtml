@@ -1,0 +1,79 @@
+﻿@model WebBackend.Models.RepresentanteLegalViewModel
+
+<div class="row">
+    <div class="form-group">
+        <div class=" col-md-4">
+            <label>¿Es usted una persona expuesta políticamente? (Decreto 1674 de 2016)</label>
+            @Html.DropDownListFor(model => model.DECRETO_1674, (SelectList)ViewBag.ListSiNo, new { @class = "form-control addPEP" })
+            @Html.ValidationMessageFor(model => model.DECRETO_1674, "", new { @class = "text-danger" })
+        </div>
+        <div class=" col-md-4">
+            <label>¿Es usted representante legal de una organización internacional?</label>
+            @Html.DropDownListFor(model => model.REP_ORG_INTERNACIONAL, (SelectList)ViewBag.ListSiNo, new { @class = "form-control addPEP" })
+            @Html.ValidationMessageFor(model => model.REP_ORG_INTERNACIONAL, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4">
+            <label>¿Es usted una persona que goza de reconocimiento público?</label>
+            @Html.DropDownListFor(model => model.RECONOCIMIENTO_PUB, (SelectList)ViewBag.ListSiNo, new { @class = "form-control addPEP" })
+            @Html.ValidationMessageFor(model => model.RECONOCIMIENTO_PUB, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-4">
+            <label>¿Existe algún vínculo entre usted y una persona públicamente expuesta?</label>
+            @Html.DropDownListFor(model => model.VINCULO_PEP, (SelectList)ViewBag.ListSiNo, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.VINCULO_PEP, "", new { @class = "text-danger" })
+        </div>
+        <div class=" col-md-4">
+            <label>Entidad PEP</label>
+            @Html.EditorFor(model => model.ENTIDAD_PEP, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="col-md-4">
+            <label>Cargo u ocupación PEP</label>
+            @Html.DropDownListFor(model => model.ID_CARGO_PEP, (SelectList)ViewBag.listCargoPEP, "Seleccione un valor", new { @class = "form-control select" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class=" col-md-4">
+
+            <label>Fecha de vinculación PEP</label>
+            @Html.EditorFor(model => model.FEC_VINCULA_PEP, new { htmlAttributes = new { @class = "form-control datepicker fecha" } })
+        </div>
+        <div class=" col-md-4">
+            <label>Fecha de desvinculación PEP</label>
+            @Html.EditorFor(model => model.FEC_DESVINCULA_PEP, new { htmlAttributes = new { @class = "form-control datepicker fecha" } })
+        </div>
+        <div class=" col-md-4">
+            <label>Fecha final PEP</label>
+            @Html.Editor("FechaDesvCargoPep", new { htmlAttributes = new { @class = "form-control datepicker fecha", @disabled = "disabled" } })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-12" style="text-align:right">
+        @*@Html.ActionLink("Next",""*@
+        <button type="button" id="btnAgregarPEP" class="btn btn-icetex" data-toggle="modal" data-target="#modalIRPEP" disabled="disabled" onclick="LimpiarCamposRelacionadoPep()">Adicionar Relacionado</button>
+    </div>
+</div>
+
+<div class="row">
+    <div id="operacionTabla">
+        @Html.Action("_TablaRelacionadosPEP", new { Id = Model.ID_PERSONA, Eliminar = 0 })
+    </div>
+</div>
+<div id="modalIRPEP" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+			<div class="modal-body">
+				<div class="x_panel">
+					@Html.Partial("~/Views/Shared/_AdicionarDatosPersonaPublica.cshtml", new WebBackend.Models.RelacionadoPepViewModel())
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

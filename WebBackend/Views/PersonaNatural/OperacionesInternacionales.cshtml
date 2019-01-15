@@ -1,0 +1,209 @@
+﻿@model WebBackend.Models.OperacionPadreViewModel
+@{
+	ViewBag.Title = "Operaciones Internacionales";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Persona Natural</h2>
+
+
+@using (Html.BeginForm("OperacionesInternacionales", "PersonaNatural", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+	@Html.HiddenFor(model => model.ID_PERSONA)
+	@Html.AntiForgeryToken()
+	<div class="x_panel">
+		<div class="x_title">
+			Operaciones Internacionales			
+		</div>
+		<div class="x_content">		
+			
+			<div class="row">
+				<div id="operacionTabla">
+					@Html.Action("_TablaOperaciones", new { Id = Model.ID_PERSONA, Eliminar = 0 })
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-12" style="text-align:right">
+					<input type="submit" name="btnAnterior" value="Anterior" class="btn btn-icetex" />
+					<input type="submit" name="btnSiguiente" value="Siguiente" class="btn btn-icetex" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row push-up-20">
+			<div class="col-md-12">
+
+				<div id="panelAgregar">
+					@Html.Action("_AgregarOperacion", new { IdPersona = Model.ID_PERSONA })
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+}
+
+@section Scripts {
+	<script src="~/Scripts/icetex.js"></script>
+	<script src="@Url.Content("~/Scripts/jquery.maskMoney.js")"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			HabilitarBotonOperacion();
+		});
+
+        $('.moneda').maskMoney({ symbol: '$ ', thousands: '.', decimal: ',', symbolStay: true });
+		$('#MonedaExtranjera').change(function () {
+            HabilitarBotonOperacion();
+        })
+
+        function GuardarOperacion()
+		{
+
+			  if ($('#ID_TIPO_OPERACIONES').val() == "") {
+                alert("El tipo operaciones es obligatorio");
+                return false;
+            }
+
+            if ($('#ENTIDAD_FINANCIERA').val() == "") {
+                alert("La entidad financiera es obligatorio");
+                return false;
+            }
+
+
+            if ($('#NUMERO_PRODUCTO').val() == "") {
+                alert("El número producto es obligatorio");
+                return false;
+            }
+            if ($('#PAIS').val() == "") {
+                alert("El país es obligatorio");
+                return false;
+            }
+
+            if ($('#CIUDAD').val() == "") {
+                alert("La ciudad es obligatorio");
+                return false;
+            }
+            if ($('#ID_TIPO_MONEDA').val() == "") {
+                alert("El tipo moneda es obligatorio");
+                return false;
+            }
+
+            if ($('#MONTO').val() == "") {
+                alert("El monto es obligatorio");
+                return false;
+            }
+
+            if ($('#TIPO_PRODUCTO').val() == "") {
+                alert("El tipo producto es obligatorio");
+                return false;
+            }
+
+            var url = '@Url.Action("AgregarOperacionIntenacional", "PersonaJuridica")';
+            var varpersonaid = '@Model.ID_PERSONA';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    id: 0, Id_persona: varpersonaid, Id_tipo_Operacion: $('#ID_TIPO_OPERACIONES').val(), entidad_financiera: $('#ENTIDAD_FINANCIERA').val(),
+                    numero_producto: $('#NUMERO_PRODUCTO').val(), pais: $('#PAIS').val(), ciudad: $('#CIUDAD').val(),
+                    Id_tipo_moneda: $('#ID_TIPO_MONEDA').val(), monto: $('#MONTO').val(), tipo_producto: $('#TIPO_PRODUCTO').val()
+                },
+                success: function (data) {
+                    if (data) {
+                        $(':input', '#myForm')
+                          .not(':button, :submit, :reset, :hidden')
+                          .val('')
+                          .removeAttr('checked')
+                          .removeAttr('selected');
+                        ActualizarTablaOperacion(0);
+
+					}
+					$("#modal_agregaroperacion").modal('hide');
+                },
+
+            });
+		}
+        $('#btnGuardarOperacion').click(function () {
+            var varIdOperacion = $("#ID_OPERACION").val();
+            if (varIdOperacion <= 0) {
+				var url = '@Url.Action("CantidadOperacion", "PersonaJuridica")';
+				var IdPer = '@Model.ID_PERSONA';
+				$.ajax({
+					url: url,
+					type: 'GET',
+					dataType: 'json',
+					data: { IdPersona: IdPer },
+					success: function (response) {
+						if (response >= 5) {
+							alert("Solo se permiten insertar 5 registros, por favor, adicionar un anexo si cuenta con más operaciones internacionales")
+							return false;
+						} else {
+                            $("#modal_agregaroperacion").modal('show');
+                            GuardarOperacion();                         
+						}
+					},
+					error: function (result) {
+
+						alert('ERROR ' + result.status + ' ' + result.statusText);
+					}
+				});
+			} else
+			{
+                GuardarOperacion();
+			}
+
+        });
+
+        function ActualizarTablaOperacion(vaerliminar) {
+            var varPersonaId =  '@Model.ID_PERSONA';
+            $('#ENTIDAD_FINANCIERA').val("");
+            $('#NUMERO_PRODUCTO').val("");
+            $('#PAIS').val("");
+            $('#CIUDAD').val("");
+            $('#MONTO').val("");
+            $('#TIPO_PRODUCTO').val("");
+            $("#ID_TIPO_OPERACIONES").val("").change();
+            $("#ID_TIPO_MONEDA").val("").change();
+
+            $.ajax({
+                url: "/PersonaJuridica/_TablaOperaciones",
+                type: "GET",
+                data: { Id: varPersonaId, Eliminar: vaerliminar }
+            })
+                .done(function (partialViewResult) {
+                    $("#operacionTabla").html(partialViewResult);
+                    $('#item-to-deletef').val(0);
+
+                    if (vaerliminar > 0) {
+                        $("#modalConfirmarOperacion").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                    }
+                });
+        }
+
+        function EliminarOperacion() {
+            var varid = $('#item-to-deletef').val();           
+            ActualizarTablaOperacion(varid);
+            return false;
+        }
+
+        function CargarModalFormacion(Id) {
+            $('#item-to-deletef').val(Id);
+        }
+
+        function HabilitarBotonOperacion() {
+            var mostrar = false;
+			if ($('#MonedaExtranjera').val() == "1") {
+                mostrar = true;
+            }
+            if (mostrar) {
+                $("#btnAgregar").removeAttr('disabled')
+            } else {
+				$("#btnAgregar").attr('disabled', 'disabled');
+			
+            }
+        }
+	</script>
+}

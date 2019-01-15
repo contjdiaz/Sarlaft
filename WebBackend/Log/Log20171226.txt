@@ -1,0 +1,177 @@
+26/12/2017 6:26:10 p. m.
+System.InvalidOperationException: No se encuentra la vista parcial '_AdicionarDatosOperacionesInternacionales' o no hay un motor de búsqueda que admita las ubicaciones de búsqueda. Se buscó en las siguientes ubicaciones: 
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.vbhtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.vbhtml
+   en System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:26:13 p. m.
+System.ArgumentException: El diccionario de parámetros contiene una entrada NULL para el parámetro 'IdPersona' del tipo que no acepta valores NULL 'System.Int64' del método 'System.Web.Mvc.ActionResult PersonaNatural(Int64)' en 'WebBackend.Controllers.PersonaNaturalController'. Un parámetro opcional debe ser un tipo de referencia, un tipo que acepte valores NULL o debe declararse como parámetro opcional.
+Nombre del parámetro: parameters
+   en System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   en System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:31:20 p. m.
+System.InvalidOperationException: No se encuentra la vista parcial '_AdicionarDatosOperacionesInternacionales' o no hay un motor de búsqueda que admita las ubicaciones de búsqueda. Se buscó en las siguientes ubicaciones: 
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.vbhtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.vbhtml
+   en System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:31:28 p. m.
+System.InvalidOperationException: No se encuentra la vista parcial '_AdicionarDatosOperacionesInternacionales' o no hay un motor de búsqueda que admita las ubicaciones de búsqueda. Se buscó en las siguientes ubicaciones: 
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.vbhtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.vbhtml
+   en System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:31:33 p. m.
+System.InvalidOperationException: No se encuentra la vista parcial '_AdicionarDatosOperacionesInternacionales' o no hay un motor de búsqueda que admita las ubicaciones de búsqueda. Se buscó en las siguientes ubicaciones: 
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.vbhtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.vbhtml
+   en System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:32:38 p. m.
+System.InvalidOperationException: No se encuentra la vista parcial '_AdicionarDatosOperacionesInternacionales' o no hay un motor de búsqueda que admita las ubicaciones de búsqueda. Se buscó en las siguientes ubicaciones: 
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.aspx
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.ascx
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/PersonaNatural/_AdicionarDatosOperacionesInternacionales.vbhtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.cshtml
+~/Views/Shared/_AdicionarDatosOperacionesInternacionales.vbhtml
+   en System.Web.Mvc.PartialViewResult.FindView(ControllerContext context)
+   en System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:44:11 p. m.
+System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en WebBackend.Controllers.ConvertirModelViewAModelBDController.ConvertirPersonaNaturalBDModel(PersonaNatural pn) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\ConvertirModelViewAModelBDController.cs:línea 230
+   en WebBackend.Controllers.PersonaNaturalController.PersonaNatural(Int64 IdPersona) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\PersonaNaturalController.cs:línea 45
+   en lambda_method(Closure , ControllerBase , Object[] )
+   en System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   en System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:45:11 p. m.
+System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en WebBackend.Controllers.ConvertirModelViewAModelBDController.ConvertirPersonaNaturalBDModel(PersonaNatural pn) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\ConvertirModelViewAModelBDController.cs:línea 230
+   en WebBackend.Controllers.PersonaNaturalController.PersonaNatural(Int64 IdPersona) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\PersonaNaturalController.cs:línea 45
+   en lambda_method(Closure , ControllerBase , Object[] )
+   en System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   en System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================
+26/12/2017 6:47:06 p. m.
+System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en WebBackend.Controllers.ConvertirModelViewAModelBDController.ConvertirPersonaNaturalBDModel(PersonaNatural pn) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\ConvertirModelViewAModelBDController.cs:línea 230
+   en WebBackend.Controllers.PersonaNaturalController.PersonaNatural(Int64 IdPersona) en C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\WebBackend\Controllers\PersonaNaturalController.cs:línea 45
+   en lambda_method(Closure , ControllerBase , Object[] )
+   en System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   en System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+=========================================

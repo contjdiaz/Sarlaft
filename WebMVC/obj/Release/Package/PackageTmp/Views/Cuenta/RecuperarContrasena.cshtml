@@ -1,0 +1,74 @@
+﻿@model WebMVC.Models.RecuperarContrasenaViewModel
+@{
+    ViewBag.Title = "RecuperarContrasena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-container">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.href = '@Url.Action("IniciarSesion")'">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <div class="titulo_seccion">Recuperar Contraseña</div>
+                    
+                <!-- Begin # DIV Form -->
+                <div class="login-body">
+
+
+                    <!-- End # Login Form -->
+                    <!-- Begin | Lost Password Form -->
+                    @using (Html.BeginForm("RecuperarContrasena", "Cuenta", FormMethod.Post, new { id = "lost-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+
+                                    <label class="tipo_azul">
+                                        Ingresa tu correo electrónico
+                                    </label>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.CorreoElectronico, new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo electrónico" } })
+                                        @Html.ValidationMessageFor(model => model.CorreoElectronico, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Aceptar</button>
+                            </div>
+                            <div>
+                                <a href="@Url.Action("IniciarSesion")" class="btn btn-link tipo_azul">Ingresar</a>
+                                <button id="lost_register_btn" type="button" class="btn btn-link tipo_azul" onclick="location.href = '/account/Register'">Registrarse</button>
+                            </div>
+                        </div>
+                    }
+                    <!-- End | Lost Password Form -->
+                    <!-- Begin | Register Form -->
+                    <!-- End | Register Form -->
+
+                </div>
+                <!-- End # DIV Form -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Popup -->
+    <!-- ./about -->
+    <!-- page footer wrap -->
+    <!-- social links -->
+    <!-- ./page footer -->
+
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

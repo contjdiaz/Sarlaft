@@ -1,0 +1,18 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/Componentes/bin
+/Componentes/obj
+/Datos/bin
+/Entidades/bin
+/Logica/bin
+/Servicios/bin
+/WebBackend/bin
+/WebMVC/bin
+/.vs/ConocimientoClienteVersion2.0/v15/.suo
+/.vs/ICETEX_SARLAFTV2/v15/Server/sqlite3/db.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.cache

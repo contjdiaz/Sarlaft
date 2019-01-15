@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="~/img/favicon.png" type="image/x-icon" />
+    <title>SARLAFT</title>
+    @*@Styles.Render("~/Content/css")*@
+	<link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="~/Content/jquery-ui.css" type="text/css" />
+	<link rel="stylesheet" href="~/Content/css_icetex.css" type="text/css" />
+	<link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="page-header">
+            <!-- page header holder -->
+            <!-- page logo -->
+
+            <div class="row fondo_icetex">
+                <div class="col-xs-5 logo_icetex">
+                    <img src="~/img/logos/logo_icetex.png" title="Icetex" alt="Icetex" class="img-responsive" />
+                </div>
+                <div class="col-xs-7">
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-push-8 col-xs-6 col-xs-push-7 nuevopais">
+
+                        </div>
+                        <div class="col-sm-8 col-sm-pull-6 col-xs-12 col-xs-pull-5  titulo_icetex">
+                          CONOCIMIENTO DEL CLIENTE
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      
+            <div class="page-content">
+                <div class="container body-content">
+                    <hr />
+                    <br/>
+                    @RenderBody()
+
+                </div>
+                    <hr />
+
+                </div>
+            <div class="page-footer">
+                <!-- page footer wrap -->
+                <div class="page-footer-wrap bg-dark-gray">
+                    <!-- page footer holder -->
+                    <div class="page-footer-holder page-footer-holder-main">
+                        <div class="container">
+                            <!-- quick links -->
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <h3>Contacto</h3>
+                                    <div class="list-with-icon small">
+                                        <div class="redes">
+                                            <span class="fa-mapas fa-2x"></span>
+                                            Carrera 3 No. 18 - 32  Bogotá D.C., Colombia
+                                        </div>
+                                        <div class="fc-row">
+                                            <span class="fa-telephone fa-2x"></span>
+                                            PBX: (571) 382-1670
+                                        </div>
+                                        <div class="fc-row">
+                                            <span class="fa-correo fa-2x"></span>
+                                            Líneas de atención al usuario del ICETEX  Bogotá: (57-1) 417-3535
+                                            A nivel nacional: tel: 019003313777 (con costo) | línea de quejas y reclamos: 018000-916821 (gratuita)
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                                <!-- ./quick links -->
+                                <!-- recent tweets -->
+                                <div class="col-md-4">
+                                    <h3>Redes sociales</h3>
+                                    <div class="list-with-icon small">
+                                        <div class="redes">
+                                            <a href="https://www.facebook.com/icetexcolombia" target="blank">  <span class="fa-face fa-2x" /> </a>
+                                            <a href="https://www.facebook.com/icetexcolombia" target="blank" class="texto_footer">Facebook </a>
+                                        </div>
+
+                                        <div class="redes">
+                                            @*<div class="fa-twitter2 fa-2x">*@
+                                            <a href="https://twitter.com/ICETEX" target="blank">  <span class="fa-twitter2 fa-2x" /> </a>
+                                            <a href="https://twitter.com/ICETEX" target="blank" class="texto_footer"> Twitter</a>
+                                            @*</div>*@
+
+                                        </div>
+                                        <div class="redes">
+                                            <a href="https://www.youtube.com/user/ICETEXTV" target="blank">  <span class="fa-youtube2 fa-2x" /> </a>
+                                            <a href="https://www.youtube.com/user/ICETEXTV" target="blank" class="texto_footer">  Youtube </a>
+                                        </div>
+                                        <div class="redes">
+
+
+                                            <a href="https://www.linkedin.com/company/711832/" target="blank">  <span class="fa-soundcloud2 fa-2x" /> </a>
+                                            <a href="https://www.linkedin.com/company/711832/" target="blank" class="texto_footer"> Likedin</a>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h3>Enlaces de interés</h3>
+                                    <div class="list-links">
+                                        <a href="https://portal.icetex.gov.co/Portal/" target="_blank">Portal Icetex</a>
+
+                                    </div>
+                                </div>
+                                <!-- ./recent tweets -->
+                                <!-- contacts -->
+                         
+                            </div>
+                            <!-- ./contacts -->
+                        </div>
+                    </div>
+                    <!-- ./page footer holder -->
+                </div>
+                <!-- ./page footer wrap -->
+                <!-- page footer wrap -->
+                <div class="page-footer-wrap bg-darken-gray">
+                    <!-- page footer holder -->
+                    <div class="page-footer-holder">
+                        <!-- copyright -->
+                        <div class="copyright">
+                           
+                        </div>
+                        <!-- ./copyright -->
+
+                    </div>
+                    <!-- ./page footer holder -->
+                </div>
+                <!-- ./page footer wrap -->
+            </div>
+        <footer class="barragris">
+            Icetex - Sarlaft 2017
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+	@*<script src="~/js/jquery.min.js"></script>*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/utilidad")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

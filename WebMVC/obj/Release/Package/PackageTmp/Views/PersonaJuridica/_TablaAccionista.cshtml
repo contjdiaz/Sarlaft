@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebMVC.Models.RelacionadoPepViewModel>
+
+@Html.Hidden("item-to-deletef", "", new { @id = "item-to-deletef" })
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Relacion</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Tipo Identificacón</th>
+                <th>No. Identificacón</th>
+                <th>Entidad</th>
+                <th>Cargo Ocupación</th>
+                <th>Acción</th>
+
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.Relacion_RPEP </td>
+                        <td>@item.Nombres_RPEP </td>
+                        <td>@item.Apellidos_RPEP</td>
+                        <td>@item.TipoDocumento_RPEP</td>
+                        <td>@item.DOCUMENTO_RPEP</td>
+                        <td>@item.NOMBRE_ENTIDAD_RPEP</td>
+                        <td>@item.CARGO_RPEP</td>
+                        <td><a href="" class="fa fa-trash delete" data-toggle="modal" data-target="#modalConfirmarPEP" data-id="@item.ID_RELACIONADO_PEP" onclick="javascript: CargarModalFormacion('@item.ID_RELACIONADO_PEP');">Eliminar</a></td>
+                        <td><a href="" class="fa fa-trash edit"  data-toggle="modal" data-target="#modal_agregaraccionista" data-id="@item.ID_RELACIONADO_PEP" onclick="javascript: EditarRelacionadoPEP('@item.ID_RELACIONADO_PEP');">Editar</a></td>
+                    </tr>
+
+                </tbody>
+            }
+        }
+    </table>
+</div>
+
+<div id="modalConfirmarPEP" class="modal modal-vcenter fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Esta a punto de eliminar un administrador. <strong>Tenga en cuenta que esta acción no se puede revertir</strong>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="myDeleteForma" class="btn btn-danger" data-dismiss="modal" onclick="EliminarAdministrador()">Eliminar</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>

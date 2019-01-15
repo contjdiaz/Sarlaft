@@ -1,0 +1,119 @@
+﻿
+@model WebBackend.Models.ConsultaPersonaViewModel
+@{
+	ViewBag.Title = "Consultas";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Index", "ConsultaPersona", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+	@Html.AntiForgeryToken()
+
+
+	<div class="x_panel">		
+
+		<div class="row">
+			<div class="form-group">	
+				<div class="col-md-3">
+					<label>Tipo persona</label>
+					@Html.DropDownListFor(model=> model.ID_TIPO_PERSONA, (SelectList)ViewBag.ListaTipoPersona,"Seleccione un valor", new { @class = "form-control" })
+					
+				</div>
+				<div class="col-md-3">
+					<label>Tipo documento</label>
+					@Html.DropDownListFor(model=>model.ID_TIPO_DOCUMENTO, Enumerable.Empty<SelectListItem>(),"Seleccione un valor", new { @class = "form-control" })
+
+				</div>
+				<div class="col-md-3">
+					<label>Documento</label>
+					@Html.EditorFor(model=>model.NUMERO_DOCUMENTO, new { htmlAttributes = new { @class = "form-control" } })
+					
+				</div>	
+				<div class="col-md-3">
+					<br />
+					<button type="submit" class="btn btn-icetex">Buscar</button>
+					@*<button type="submit" name="btnSiguiente" class="btn btn-icetex">Siguiente</button>*@
+				</div>
+			</div>
+		
+		</div>
+		<br />
+		<div class="x_title">
+			Resultado búsqueda
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="consultaPersona">				
+					@Html.Partial("_ConsultaPersona", Model.ListaPersonas)			
+			</div>
+		</div>
+
+</div>
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			//TipoDocumento($('#ddlTipoPersona').val());
+		});
+
+        $(function () {
+			$('#ID_TIPO_PERSONA').change(function () {
+				$('#ID_TIPO_DOCUMENTO').empty();
+				TipoDocumento($('#ID_TIPO_PERSONA').val());
+                return false;
+            })
+
+        });
+
+        function TipoDocumento(tipoPersona) {
+
+            $.ajax({
+                type: 'POST',
+                url: "/ConsultaPersona/ObtenerTipoDocPorTipoPersona",
+                dataType: 'json',
+                data: { codigoTipoPersona: tipoPersona },
+                success: function (tipoDocs) {
+                    $.each(tipoDocs, function (i, tipoDoc) {
+						$("#ID_TIPO_DOCUMENTO").append('<option value="' + tipoDoc.Value + '">' +
+                            tipoDoc.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Error: ' + ex);
+                }
+            });
+		}
+		@*function consultarPersona()
+		{
+			g
+			//var idTipoDocumento = $("#ddlTipoDocumento").val();
+			//var idTipoPersona = $("#ddlTipoPersona").val();
+			//var documento = $("#txtDocumento").val();
+			debugger;
+			var url='@Url.Action("_ConsultaPersona", "ConsultaPersona")';
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: { idTipoPersona: $("#ddlTipoPersona").val(), idTipoDocumento: $("#ddlTipoDocumento").val(), documento: $("#txtDocumento").val()},
+				success: function (data) {
+					if (data) {
+						debugger;
+						$(':input', '#myForm')
+							.not(':button, :submit, :reset, :hidden')
+							.val('')
+							.removeAttr('checked')
+							.removeAttr('selected');
+					}
+				},
+			})
+				.done(function (partialViewResult) {
+					$("#consultaPersona").html(partialViewResult);
+				});
+		}*@
+	</script>
+}
+
+

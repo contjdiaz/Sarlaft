@@ -1,0 +1,12 @@
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\bin\Release\Entidades.dll
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\bin\Release\Entidades.pdb
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.dll
+C:\Users\Sandra\Documents\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.pdb
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\bin\Release\Entidades.dll
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\bin\Release\Entidades.pdb
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.dll
+E:\PrestacionServicios\Icetex\Tfs\Sarlaft\Sarlaft\Entidades\obj\Release\Entidades.pdb

@@ -1,0 +1,86 @@
+﻿
+@model WebMVC.Models.PersonaViewModel
+@{
+    ViewBag.Title = "InformacionFinanciera";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Persona Jurídica</h2>
+@using (Html.BeginForm("InformacionFInanciera", "PersonaJuridica", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+@Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="x_panel">
+
+        <div class="x_title">
+            Información Financiera
+        </div>
+        <div class="x_content">
+
+            @Html.Partial("~/Views/Shared/_DatosFinanciera.cshtml", Model)
+
+            <br />
+            <div class="row">
+                <div class="form-group col-md-12" style="text-align:right">
+                    @Html.ActionLink("Anterior", "RepresentanteLegal", "PersonaJuridica", new { Id = Model.IdPersonaViewModel }, new { @class = "btn btn-icetex" })
+                    <input type="submit" name="btnSiguiente" value="Siguiente" class="btn btn-icetex" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="@Url.Content("~/Scripts/jquery.maskMoney.js")"></script>
+
+   <script type="text/javascript">
+
+       //$("#TOTAL_PATRIMONIO").attr("readonlly", "readonlly");
+       $(document).ready(function () {
+           $('.moneda').maskMoney({ symbol: '$ ', thousands: '.', decimal: ',', symbolStay: true, allowNegative: true });
+           CalcularPatrimonio();
+       });
+
+       $('#TOTAL_ACTIVOS').change(function () {
+           CalcularPatrimonio();
+       });
+
+       $('#TOTAL_PASIVOS').change(function () {
+           CalcularPatrimonio();
+       });
+
+       $('#OTROS_INGRESOS_MENSUALES').change(function () {
+           var concepto = $('#OTROS_CONCEPTOS').val();
+           if (concepto == "") {
+               alert('Es obligatorio diligenciar el concepto de otros ingresos');
+           }
+       });
+
+       function CalcularPatrimonio() {
+           debugger;
+           var activo = $('#TOTAL_ACTIVOS').val();
+           var pasivo = $('#TOTAL_PASIVOS').val();
+           var ingresos = $('#INGRESOS_MENSUALES').val();
+           var egresos = $('#EGRESOS_MENSUALES').val();
+           var otrosIngresos = $('#OTROS_INGRESOS_MENSUALES').val();
+
+           if (ingresos != "") $('#INGRESOS_MENSUALES').val(ingresos).trigger('mask.maskMoney');
+           if (egresos != "") $('#EGRESOS_MENSUALES').val(egresos).trigger('mask.maskMoney');
+           if (otrosIngresos != "") $('#OTROS_INGRESOS_MENSUALES').val(otrosIngresos).trigger('mask.maskMoney');
+
+           if (activo != "" && pasivo != "") {
+               $('#TOTAL_ACTIVOS').val(activo).trigger('mask.maskMoney');
+               $('#TOTAL_PASIVOS').val(pasivo).trigger('mask.maskMoney');
+               activo = activo.split('.').join('');
+               pasivo = pasivo.split('.').join('');
+               activo = activo.split(',').join('.');
+               pasivo = pasivo.split(',').join('.');
+               var value = (parseFloat(activo) - parseFloat(pasivo)).toFixed(2);
+               $("#TOTAL_PATRIMONIO").removeAttr("readonly");
+               $('#TOTAL_PATRIMONIO').val(value).trigger('mask.maskMoney');
+               $("#TOTAL_PATRIMONIO").attr("readonly", "readonly");
+           }
+       }	
+</script>
+}
